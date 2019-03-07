@@ -7,7 +7,7 @@ def start(Map jobArgs = null) {
         stage("checkout") {
             checkout scm
             print pwd()
-            sh "ls -l"
+            sh "ls -ltR"
         }
         stage("build") {
             def tech = scanRepoTechnology()
