@@ -7,10 +7,6 @@ def start(Map jobArgs = null) {
         stage("checkout") {
             checkout scm
             print pwd()
-            sh """
-                pwd
-                ls -ltR
-            """
         }
         stage("build") {
             def tech = scanRepoTechnology()
@@ -31,7 +27,8 @@ def executeBuild(String technology) {
 }
 
 String scanRepoTechnology() {
-    if(isFileExists("/var/lib/jenkins/workspace/multi-test_master/pom.xml")) {
+    String pDir = pwd()
+    if(isFileExists(pDir +"/pom.xml")) {
         return "java"
     }
 }
