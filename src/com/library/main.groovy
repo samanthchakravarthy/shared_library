@@ -20,6 +20,10 @@ def executeBuild(String technology) {
     switch (technology) {
         case "java":
             print "Gotcha!!! Its Java. Performing the Java build"
+            break
+        default:
+            print "No tech found"
+            break
     }
 }
 
