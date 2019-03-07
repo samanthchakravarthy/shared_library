@@ -28,7 +28,7 @@ String scanRepoTechnology() {
 }
 
 boolean isFileExists(String fileName) {
-    def file = File(fileName)
+    def file = new File(fileName)
     return file.exists()
 }
 
