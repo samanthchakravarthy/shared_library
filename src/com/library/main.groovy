@@ -31,7 +31,7 @@ def executeBuild(String technology) {
 }
 
 String scanRepoTechnology() {
-    if(isFileExists("pom.xml")) {
+    if(isFileExists("/var/lib/jenkins/workspace/multi-test_master/pom.xml")) {
         return "java"
     }
 }
