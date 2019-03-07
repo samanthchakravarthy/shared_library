@@ -6,10 +6,12 @@ def start(Map jobArgs = null) {
     node () {
         stage("checkout") {
             checkout scm
+            print pwd()
+            sh "ls -l"
         }
         stage("build") {
             def tech = scanRepoTechnology()
-           executeBuild(tech)
+            executeBuild(tech)
         }
     }
 }
