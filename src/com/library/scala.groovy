@@ -1,13 +1,13 @@
 #!/usr/bin/groovy
-package com.library
+package  com.library
 
 def run(args) {
     try{
-        String lang = 'java'
-        println("Executing java build....")
+        String lang = 'scala'
+        println("Executing scala build....")
         sh """
-           cd java
-           mvn clean install
+           cd scala
+           sbt clean assembly
         """
         libraryUtils.generateSonarPropertiesFile(args,lang)
         libraryUtils.runSonarAnalysis(lang)

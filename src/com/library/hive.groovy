@@ -3,12 +3,7 @@ package com.library
 
 def run(args) {
     try{
-        String lang = 'java'
-        println("Executing java build....")
-        sh """
-           cd java
-           mvn clean install
-        """
+        String lang = 'hive'
         libraryUtils.generateSonarPropertiesFile(args,lang)
         libraryUtils.runSonarAnalysis(lang)
 
