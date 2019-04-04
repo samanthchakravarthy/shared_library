@@ -1,6 +1,13 @@
 #!/usr/bin/groovy
 package com.library
 
+def execute(userPropFile = 'props.yml'){
+  args = [:]
+  args.userPropFile = userPropFile 
+
+start(jobArgs)
+}
+
 def start(Map jobArgs = null) {
     print "success"
     node () {

@@ -104,7 +104,7 @@ Map loadProperties(loadLibVars){
     }
 }
 
-def loadLibraryVars(loadLibVars = "props.yml"){
+def loadLibraryVars(loadLibVars = 'props.yml'){
     props = [:]
     println ("loading props $loadLibVars")
     propsFileName = loadLibVars
