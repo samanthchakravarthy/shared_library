@@ -22,7 +22,7 @@ def start(Map jobArgs = null) {
 }
 
 def executeBuild(String lang) {
-    switch (technology) {
+    switch (lang) {
         case "java":
             print "Gotcha!!! Its Java. Performing the Java build"
             new java().run(args)
