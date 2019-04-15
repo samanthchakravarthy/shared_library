@@ -8,7 +8,7 @@ String scanRepoTechnology() {
     if (isFileExists(pDir + "/build.sbt")){
         return "scala"
     }
-    if(isFileExists(pDir + "/environmental.yml")){
+    if(isFileExists(pDir + "/environment.yml")){
         return "python"
     }
 }
