@@ -160,7 +160,7 @@ def uploadSpec(args){
      """{
       "files": [
            {
-             "pattern": "${args.fileName}",
+             "pattern": "*.jar",
              "path": "${args.path}"
            }  
          ]
