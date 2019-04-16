@@ -65,9 +65,9 @@ void generateSonarPropertiesFile(args, String lang){
            cd $lang
            echo "sonar.sources=." >> sonar-project.properties
            echo "sonar.sourceEncoding=UTF-8" >> sonar-project.properties
-            echo "sonar.language=$langCode" >> sonar-project.properties
-            echo "sonar.projectKey=${args.projectKey}-$lang" >> sonar-project.properties
-            echo "sonar.projectName=${args.projectName}-$lang" >> sonar-project.properties
+           echo "sonar.language=$langCode" >> sonar-project.properties
+           echo "sonar.projectKey=${args.repoName}_$lang" >> sonar-project.properties
+           echo "sonar.projectName=${args.repoName}-$lang" >> sonar-project.properties
         """
         println("Generating sonar properties for " +lang+ "is completed")
     }catch(e){

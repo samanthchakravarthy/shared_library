@@ -8,7 +8,7 @@ package com.library
 start(jobArgs)
 }*/
 
-def start( Map args,String lang) {
+def start(Map args) {
     print "success"
     node () {
         stage("checkout") {
@@ -18,13 +18,13 @@ def start( Map args,String lang) {
             sh "pwd"
             sh "ls -ltaR"
             //def lang = libraryUtils.scanRepoTechnology()
-            executeBuild(lang)
+            executeBuild(args)
         }
     }
 }
 
-def executeBuild(String lang) {
-    switch (lang) {
+def executeBuild(args) {
+    switch (args.lang) {
         case "java":
             print "Gotcha!!! Its Java. Performing the Java build"
             new java().run(args)
