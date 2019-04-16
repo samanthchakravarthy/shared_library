@@ -7,7 +7,7 @@ def run(args) {
         stage('UnitTest'){
             print("Executing unit tests for python")
             //sh "cd python"
-            sh "python -m unittest discover -s test/"
+            sh "python -m unittest discover -s python/test/"
             print("COmpleted executing unit tests")
         }
 
