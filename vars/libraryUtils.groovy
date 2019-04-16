@@ -122,8 +122,8 @@ def addToVars(String name, value){
 }
 
 def snapshot(args){
-    String zipFileName = ${args.repoName}_installer 
-    String inputDir = ${args.lang}
+    String zipFileName = "${args.repoName}_installer"
+    String inputDir = "${args.lang}"
  //   def outputDir = "zip"
 
     //Zip files
