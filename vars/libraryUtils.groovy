@@ -161,7 +161,7 @@ def uploadSpec(args){
       "files": [
            {
              "pattern": "/var/lib/jenkins/workspace/Hack-java_master/target/snowball-0.0.1-SNAPSHOT.jar",
-             "path": "${args.path}"
+             "target": "${args.path}"
            }  
          ]
         }"""
