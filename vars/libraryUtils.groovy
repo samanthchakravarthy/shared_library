@@ -161,7 +161,7 @@ def uploadSpec(args){
       "files": [
            {
              "pattern": "*.jar",
-             "target": "example-repo-local/"
+             "target": "hack-release-repo/"
            }  
          ]
         }"""
@@ -173,7 +173,7 @@ def uploadSpec(args){
 
 def notifyAll(String status) {
     String msg = "Status: ${status}\n JOB URL: ${JOB_URL}${BUILD_NUMBER}"
-    mail to: 'srikanth.gunuputi@gmail.com', subject: "Build result", body: msg
+    mail to: 'srikanth.gunuputi@gmail.com,hema021335@gmail.com', subject: "Build result", body: msg
     slackSend baseUrl:'https://hackdevworkspace.slack.com/services/hooks/jenkins-ci/', channel: 'devops', token: '7QUnAnnhglOyF7n0qoH9yiPX', message: msg
     office365ConnectorSend message: msg, status: status, webhookUrl: 'https://outlook.office.com/webhook/5cbe6a92-432a-4e89-85c4-5fe44f903157@76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61/JenkinsCI/13ba2d36d21b40d6b23222d214d1bc97/e738f645-7d63-468d-b25b-fcd9315c6c59'
 }

@@ -14,20 +14,27 @@ def start(Map args) {
         stage("checkout") {
             checkout scm
         }
-        stage("build") {
+        stage("mergeCOnflict"){
+            print("Merge conflict stage is in progress")
+        }
+        stage("Compile") {
             //def lang = libraryUtils.scanRepoTechnology()
             executeBuild(args)
         }
         stage("package"){
             libraryUtils.uploadSpec(args)
         }
-    }
-
-    if(currentBuild.result == null || currentBuild.result.isEmpty()) {
-        libraryUtils.notifyAll('SUCCESS')
-    }
-    else{
-        libraryUtils.notifyAll(currentBuild.result)
+        stage("Tagging"){
+            print("Tagging stage is in progress")
+        }
+        stage("Notifications"){
+            if(currentBuild.result == null || currentBuild.result.isEmpty()) {
+                libraryUtils.notifyAll('SUCCESS')
+            }
+            else{
+                libraryUtils.notifyAll(currentBuild.result)
+            }
+        }
     }
 }
 
