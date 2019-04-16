@@ -61,8 +61,7 @@ void generateSonarPropertiesFile(args, String lang){
         def langMap = [python:  'py', scala: 'scala', java: 'java', impala: 'plsql', hive: 'plsql', oozie: 'xml']
         def langCode = langMap[lang]
         sh"""
-           touch $lang/sonar-project.properties
-           cd $lang
+           touch sonar-project.properties
            echo "sonar.sources=." >> sonar-project.properties
            echo "sonar.sourceEncoding=UTF-8" >> sonar-project.properties
            echo "sonar.login=593204f7cdb8c9e99de1bed42b6b9aa775628e73" >> sonar-project.properties
@@ -84,7 +83,6 @@ void runSonarAnalysis(String lang){
         println(scanner)
         println("Running sonar analysis for" +lang)
         sh"""
-         cd $lang
          $scanner/bin/sonar-scanner
          rm sonar-project.properties
         """
