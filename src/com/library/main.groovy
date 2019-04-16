@@ -15,6 +15,8 @@ def start(Map jobArgs = null) {
             checkout scm
         }
         stage("build") {
+            sh "pwd"
+            sh "ls -ltaR"
             def tech = libraryUtils.scanRepoTechnology()
             executeBuild(tech)
         }
