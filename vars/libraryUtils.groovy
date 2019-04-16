@@ -66,9 +66,10 @@ void generateSonarPropertiesFile(args, String lang){
            echo "sonar.sources=." >> sonar-project.properties
            echo "sonar.sourceEncoding=UTF-8" >> sonar-project.properties
            echo "sonar.login=593204f7cdb8c9e99de1bed42b6b9aa775628e73" >> sonar-project.properties
+           echo "sonar.organization=Hackathon" >> sonar-project.properties
            echo "sonar.language=$langCode" >> sonar-project.properties
            echo "sonar.projectKey=${args.repoName}_$lang" >> sonar-project.properties
-           echo "sonar.projectName=${args.repoName}-$lang" >> sonar-project.properties
+           #echo "sonar.projectName=${args.repoName}-$lang" >> sonar-project.properties
            cat sonar-project.properties           
         """
         println("Generating sonar properties for " +lang+ "is completed")
@@ -85,7 +86,7 @@ void runSonarAnalysis(String lang){
         sh"""
          cd $lang
          $scanner/bin/sonar-scanner
-         rm -f sonar-project.properties
+         rm sonar-project.properties
         """
     }
     println("Running sonar analysis for "+lang+ "is completed")
