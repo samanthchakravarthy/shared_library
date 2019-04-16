@@ -85,7 +85,7 @@ void runSonarAnalysis(String lang){
         sh"""
          cd $lang
          $scanner/bin/sonar-scanner
-         rm sonar-project.properties
+         rm -f sonar-project.properties
         """
     }
     println("Running sonar analysis for "+lang+ "is completed")
