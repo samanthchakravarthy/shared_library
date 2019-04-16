@@ -1,14 +1,14 @@
 #!/usr/bin/groovy
 package com.library
 
-def execute(userPropFile = 'props.yml'){
+/*def execute(userPropFile = 'props.yml'){
   args = [:]
   args.userPropFile = userPropFile 
 
 start(jobArgs)
-}
+}*/
 
-def start(Map jobArgs = null) {
+def start(String lang) {
     print "success"
     node () {
         stage("checkout") {
@@ -17,8 +17,8 @@ def start(Map jobArgs = null) {
         stage("build") {
             sh "pwd"
             sh "ls -ltaR"
-            def tech = libraryUtils.scanRepoTechnology()
-            executeBuild(tech)
+            //def lang = libraryUtils.scanRepoTechnology()
+            executeBuild(lang)
         }
     }
 }

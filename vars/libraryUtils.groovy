@@ -1,6 +1,6 @@
 #!/usr/bin/groovy
 
-String scanRepoTechnology() {
+/*String scanRepoTechnology() {
     String pDir = pwd()
     if (isFileExists(pDir + "/pom.xml")) {
         return "java"
@@ -11,7 +11,7 @@ String scanRepoTechnology() {
     if(isFileExists(pDir + "/environment.yml")){
         return "python"
     }
-}
+}*/
 
 
 boolean isFileExists(String fileName) {
