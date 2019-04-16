@@ -9,12 +9,11 @@ start(jobArgs)
 }*/
 
 def start(Map args) {
-    print "success"
     node () {
-        stage("checkout") {
+        stage("Checkout") {
             checkout scm
         }
-        stage("mergeCOnflict"){
+        stage("MergeConflict"){
             print("Merge conflict stage is in progress")
         }
         stage("Compile") {
