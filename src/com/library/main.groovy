@@ -21,7 +21,7 @@ def start(Map args) {
             //def lang = libraryUtils.scanRepoTechnology()
             executeBuild(args)
         }
-        stage("package"){
+        stage("Package"){
             libraryUtils.uploadSpec(args)
         }
         stage("Tagging"){
