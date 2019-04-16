@@ -142,7 +142,8 @@ def snapshot(args){
             zipFile.closeEntry()
         }
     }  
-    zipFile.close()  
+    zipFile.close()
+    uploadSpec(args)
 }    
 
 def uploadSpec(args){

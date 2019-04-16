@@ -18,6 +18,9 @@ def start(Map args) {
             //def lang = libraryUtils.scanRepoTechnology()
             executeBuild(args)
         }
+        stage("package"){
+            libraryUtils.snapshot(args)
+        }
     }
 }
 
