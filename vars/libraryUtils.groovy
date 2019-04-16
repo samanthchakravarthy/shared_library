@@ -156,13 +156,11 @@ def snapshot(args){
 def uploadSpec(args){
     def server = Artifactory.newServer url: "http://54.158.208.252:8081/artifactory/", credentialsId: "artifactory-credentials"
     sh "pwd"
-    sh "touch 1.txt"
-    //sh "curl -u admin:srikanth -X PUT \"http://54.158.208.252:8081/artifactory/artifactory-build-info/1.txt\" -T 1.txt"
-    def uploadSpec =  
+    def uploadSpec =
      """{
       "files": [
            {
-             "pattern": "/var/lib/jenkins/workspace/Hack-java_master/1.txt",
+             "pattern": "*.jar",
              "target": "example-repo-local/"
            }  
          ]
