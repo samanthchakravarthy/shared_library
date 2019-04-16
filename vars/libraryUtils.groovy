@@ -168,7 +168,7 @@ def uploadSpec(args){
          ]
         }"""
 
-        server.content-type "text/plain"
+        //server.content-type "text/plain"
         def buildInfo = server.upload spec: uploadSpec
         //server.publishBuildInfo buildInfo
 }
