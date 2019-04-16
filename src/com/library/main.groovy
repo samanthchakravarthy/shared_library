@@ -15,8 +15,6 @@ def start(Map args) {
             checkout scm
         }
         stage("build") {
-            sh "pwd"
-            sh "ls -ltaR"
             //def lang = libraryUtils.scanRepoTechnology()
             executeBuild(args)
         }

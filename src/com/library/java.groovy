@@ -9,9 +9,13 @@ def run(args) {
            cd java
            mvn clean install
         """
-        libraryUtils.generateSonarPropertiesFile(args,lang)
-        libraryUtils.runSonarAnalysis(lang)
-
+        stage('UnitTest'){
+            print("Unit tests are executed in the build command")
+        }
+        stage('SonarAnalysis') {
+            libraryUtils.generateSonarPropertiesFile(args, lang)
+            libraryUtils.runSonarAnalysis(lang)
+        }
     }catch(e){
         print(e.getMessage())
         return false
