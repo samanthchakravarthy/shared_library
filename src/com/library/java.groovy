@@ -6,7 +6,6 @@ def run(args) {
         String lang = 'java'
         println("Executing java build....")
         sh """
-           cd java
            mvn clean install
         """
         stage('UnitTest'){

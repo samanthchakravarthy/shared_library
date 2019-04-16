@@ -8,7 +8,7 @@ def run(args) {
             print("Executing unit tests for python")
             //sh "cd python"
             sh "python -m unittest discover -s python/test/"
-            print("COmpleted executing unit tests")
+            print("Completed executing unit tests")
         }
 
         stage('SonarAnalysis') {
