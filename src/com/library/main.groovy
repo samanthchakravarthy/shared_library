@@ -22,6 +22,13 @@ def start(Map args) {
             libraryUtils.uploadSpec(args)
         }
     }
+
+    if(currentBuild.result == null || currentBuild.result.isEmpty()) {
+        libraryUtils.notifyAll('SUCCESS')
+    }
+    else{
+        libraryUtils.notifyAll(currentBuild.result)
+    }
 }
 
 def executeBuild(args) {
