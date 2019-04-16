@@ -8,7 +8,7 @@ package com.library
 start(jobArgs)
 }*/
 
-def start(String lang) {
+def start( Map args,String lang) {
     print "success"
     node () {
         stage("checkout") {
