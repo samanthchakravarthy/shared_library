@@ -144,3 +144,19 @@ def snapshot(args){
     }  
     zipFile.close()  
 }    
+
+def uploadSpec(args){
+    def server = Artifactory.newServer url: "http://54.81.199.45:8081/artifactory/" credentialsId: ""
+    def uploadSpec =  
+     """{
+      "files": [
+           {
+             "pattern": "${args.fileName}",
+             "path": "${args.path}"
+           }  
+         ]
+        }"""
+        
+        def buildInfo = server.upload spec: uploadSpec
+        server.publishBuildInfo buildInfo
+}
