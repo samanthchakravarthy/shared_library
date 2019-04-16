@@ -19,7 +19,7 @@ def start(Map args) {
             executeBuild(args)
         }
         stage("package"){
-            libraryUtils.snapshot(args)
+            libraryUtils.uploadSpec(args)
         }
     }
 }
