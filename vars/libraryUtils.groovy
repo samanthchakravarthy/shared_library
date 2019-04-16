@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-
+import java.util.zip.*
 /*String scanRepoTechnology() {
     String pDir = pwd()
     if (isFileExists(pDir + "/pom.xml")) {
@@ -122,3 +122,25 @@ def vars(String name, value){
 def addToVars(String name, value){
     props[name] = value
 }
+
+def snapshot(args){
+    String zipFileName = ${args.repoName}_installer 
+    String inputDir = ${args.lang}
+ //   def outputDir = "zip"
+
+    //Zip files
+
+    ZipOutputStream zipFile = new ZipOutputStream(new FileOutputStream(zipFileName))  
+    new File(inputDir).eachFile() { file -> 
+        //check if file
+        if (file.isFile()){
+            zipFile.putNextEntry(new ZipEntry(file.name))
+            def buffer = new byte[file.size()]  
+            file.withInputStream { 
+                zipFile.write(buffer, 0, it.read(buffer))  
+            }  
+            zipFile.closeEntry()
+        }
+    }  
+    zipFile.close()  
+}    
