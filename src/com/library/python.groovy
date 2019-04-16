@@ -6,7 +6,7 @@ def run(args) {
         String lang = 'python'
         stage('UnitTest'){
             print("Executing unit tests for python")
-            sh "cd python"
+            //sh "cd python"
             sh "python -m unittest discover -s test/"
             print("COmpleted executing unit tests")
         }
