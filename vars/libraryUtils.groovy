@@ -132,9 +132,10 @@ def addToVars(String name, value){
 
 def prepPackage(args){
     def folderName = ''
-    if(${args.lang}.equals('java')){
+    def lang = "${args.lang}"
+    if(lang.equals('java')){
         folderName = 'java_artifact'
-    }else if(${args.lang}.equals('python')){
+    }else if(lang.equals('python')){
         folderName = 'python'
     }
     print(folderName)
