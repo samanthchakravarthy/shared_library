@@ -136,14 +136,16 @@ def prepPackage(args){
     print(args)
     print(lang)
     if(lang == 'java'){
+        print("inside if")
         folderName = 'java_artifact'
     }else if(lang == 'python'){
+        print("inside else")
         folderName = 'python'
     }
     print(folderName)
     sh "pwd"
-    sh "ls -ltaR"
-    String pyargs = "'folderName'='${args.lang}' 'artifactName'='${args.repoName}_installer'"
+    //sh "ls -ltaR"
+    String pyargs = "'folderName'='${folderName}' 'artifactName'='${args.repoName}_installer'"
     runScripts('packageUtils.py', pyargs)
     uploadSpec(args)
 }
