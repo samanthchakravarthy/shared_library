@@ -148,6 +148,7 @@ def prepPackage(args){
     String pyargs = "'folderName'='${folderName}' 'artifactName'='${args.repoName}_installer'"
     runScripts('packageUtils.py', pyargs)
     uploadSpec(args)
+    sh "rm ${args.repoName}_installer.zip"
 }
 
 /*
