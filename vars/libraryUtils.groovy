@@ -137,6 +137,7 @@ def prepPackage(args){
     }else if({args.lang} == 'python'){
         folderName = 'python'
     }
+    print(folderName)
     sh "pwd"
     sh "ls -ltaR"
     String pyargs = "'folderName'='$folderName' 'artifactName'='${args.repoName}_installer'"
