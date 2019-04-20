@@ -2,8 +2,6 @@ import os
 import zipfile
 import sys
 
-
-
 def main(**kwargs):
     snapshotfilename = kwargs['artifactName']
     dirnames = kwargs['folderName']
