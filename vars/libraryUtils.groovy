@@ -145,10 +145,17 @@ def prepPackage(args){
     print(folderName)
     sh "pwd"
     //sh "ls -ltaR"
-    sh "rm ${args.repoName}_installer.zip"
-    String pyargs = "'folderName'='${folderName}' 'artifactName'='${args.repoName}_installer'"
-    runScripts('packageUtils.py', pyargs)
-    uploadSpec(args)
+    if(isFileExists("${args.repoName}_installer.zip")){
+        sh "rm ${args.repoName}_installer.zip"
+        String pyargs = "'folderName'='${folderName}' 'artifactName'='${args.repoName}_installer'"
+        runScripts('packageUtils.py', pyargs)
+        uploadSpec(args)
+    }else{
+        String pyargs = "'folderName'='${folderName}' 'artifactName'='${args.repoName}_installer'"
+        runScripts('packageUtils.py', pyargs)
+        uploadSpec(args)
+        sh "rm ${args.repoName}_installer.zip"
+    }
 }
 
 /*
