@@ -174,7 +174,7 @@ def uploadSpec(args){
      """{
       "files": [
            {
-             "pattern": "${args.filename}",
+             "pattern": "*.zip",
              "target": "hack-release-repo/"
            }  
          ]
