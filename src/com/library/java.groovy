@@ -9,7 +9,7 @@ def run(args) {
            mkdir -p java_artifact
            mvn clean install
            chmod +x target/*.jar
-           cp target/*.jar ../java_artifact
+           cp target/*.jar java_artifact
         """
         stage('UnitTest'){
             print("Unit tests are executed in the build command")
