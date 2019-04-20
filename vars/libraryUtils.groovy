@@ -197,7 +197,7 @@ def notifyAll(String status) {
 
 def runScripts(String fileName, String args=''){
     writeFile(file: "../${fileName}", text: libraryResource("com/library/scripts/${fileName}"))
-    sh "chmod +x scripts/${fileName}"
+    sh "chmod +x ../${fileName}"
     String command = "python ../${fileName} ${args}"
     print(command)
     sh command
