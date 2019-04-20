@@ -133,15 +133,17 @@ def addToVars(String name, value){
 def prepPackage(args){
     def folderName = ''
     def lang = "${args.lang}"
-    if(lang.equals('java')){
+    print(args)
+    print(lang)
+    if(lang == 'java'){
         folderName = 'java_artifact'
-    }else if(lang.equals('python')){
+    }else if(lang == 'python'){
         folderName = 'python'
     }
     print(folderName)
     sh "pwd"
     sh "ls -ltaR"
-    String pyargs = "'folderName'='${folderName}' 'artifactName'='${args.repoName}_installer'"
+    String pyargs = "'folderName'='${args.lang}' 'artifactName'='${args.repoName}_installer'"
     runScripts('packageUtils.py', pyargs)
     uploadSpec(args)
 }
