@@ -137,6 +137,8 @@ def prepPackage(args){
     }else if({args.lang} == 'python'){
         folderName += 'python'
     }
+    sh "pwd"
+    sh "ls -ltaR"
     String pyargs = "'folderName' = '$folderName' 'artifactName' = '${args.reponame}_installer'"
     runScripts('packageUtils', pyargs)
     uploadSpec(args)
@@ -194,8 +196,8 @@ def notifyAll(String status) {
 }
 
 def runScripts(String fileName, String args=''){
-    writeFile(file: "../scripts/${fileName}", text: libraryResource("com/library/scripts/${fileName}"))
-    sh "chmod +x ../scripts/${fileName}"
+    writeFile(file: "scripts/${fileName}", text: libraryResource("com/library/scripts/${fileName}"))
+    sh "chmod +x scripts/${fileName}"
     String command = "python ../scripts/${fileName} ${args}"
     print(command)
     sh command
