@@ -160,7 +160,7 @@ def uploadSpec(args){
      """{
       "files": [
            {
-             "pattern": "*.jar",
+             "pattern": "${args.filename}",
              "target": "hack-release-repo/"
            }  
          ]
