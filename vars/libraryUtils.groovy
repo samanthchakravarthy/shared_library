@@ -139,7 +139,7 @@ def prepPackage(args){
     }
     sh "pwd"
     sh "ls -ltaR"
-    String pyargs = "'folderName' = '$folderName' 'artifactName' = '${args.repoName}_installer'"
+    String pyargs = "'folderName'='$folderName' 'artifactName'='${args.repoName}_installer'"
     runScripts('packageUtils.py', pyargs)
     uploadSpec(args)
 }
