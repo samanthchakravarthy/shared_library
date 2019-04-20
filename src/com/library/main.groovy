@@ -21,7 +21,7 @@ def start(Map args) {
             executeBuild(args)
         }
         stage("Package"){
-            libraryUtils.snapshot(args)
+            libraryUtils.prepPackage(args)
         }
         stage("Tagging"){
             print("Tagging stage is in progress")

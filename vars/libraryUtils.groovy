@@ -130,6 +130,19 @@ def addToVars(String name, value){
     props[name] = value
 }
 
+def prepPackage(args){
+    def folderName = ''
+    if({args.lang} == "java"){
+        folderName += 'java_artifact'
+    }else if({args.lang} == 'python'){
+        folderName += 'python'
+    }
+    String pyargs = "'folderName' = '$folderName' 'artifactName' = '${args.reponame}_installer'"
+    runScripts('packageUtils', pyargs)
+    uploadSpec(args)
+}
+
+/*
 def snapshot(args){
     String zipFileName = "${args.repoName}_installer"
     String inputDir = "${args.lang}"
@@ -152,6 +165,7 @@ def snapshot(args){
     zipFile.close()
     uploadSpec(args)
 }    
+*/
 
 def uploadSpec(args){
     def server = Artifactory.newServer url: "http://34.204.94.254:8081/artifactory/", credentialsId: "artifactory-credentials"
@@ -177,4 +191,12 @@ def notifyAll(String status) {
     office365ConnectorSend message: msg, status: status, webhookUrl: 'https://outlook.office.com/webhook/5cbe6a92-432a-4e89-85c4-5fe44f903157@76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61/JenkinsCI/13ba2d36d21b40d6b23222d214d1bc97/e738f645-7d63-468d-b25b-fcd9315c6c59'
     slackSend baseUrl:'https://hackdevworkspace.slack.com/services/hooks/jenkins-ci/', channel: 'devops', token: '7QUnAnnhglOyF7n0qoH9yiPX', message: msg
 
+}
+
+def runScripts(String fileName, String args=''){
+    writeFile(file: "../scripts/${fileName}", text: libraryResource("com/library/scripts/${fileName}"))
+    sh "chmod +x ../scripts/${fileName}"
+    String command = "python ../scripts/${fileName} ${args}"
+    print(command)
+    sh command
 }
