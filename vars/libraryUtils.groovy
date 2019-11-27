@@ -204,7 +204,7 @@ def uploadSpec(args){
 def notifyAll(String status) {
     String msg = "Status: ${status}\n JOB URL: ${JOB_URL}${BUILD_NUMBER}"
     //mail to: 'srikanth.gunuputi@gmail.com,hema021335@gmail.com', subject: "Build result", body: msg
-    office365ConnectorSend message: msg, status: status, webhookUrl: 'https://teams.microsoft.com/l/team/19%3aa7737488eac64b0eb87f995c74f254b5%40thread.skype/conversations?groupId=5cbe6a92-432a-4e89-85c4-5fe44f903157&tenantId=76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61'
+    office365ConnectorSend message: msg, status: status, webhookUrl: 'https://outlook.office.com/webhook/ab5a92ea-ae03-42dd-9f87-2d1d86048d29@76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61/JenkinsCI/1e829e7444d64c8b9a8f3d7dd9d89497/da11b87b-2856-4a25-afc9-4d2bcc12feba'
     //slackSend baseUrl:'https://hackdevworkspace.slack.com/services/hooks/jenkins-ci/', channel: 'devops', token: '7QUnAnnhglOyF7n0qoH9yiPX', message: msg
 
 }
