@@ -184,14 +184,14 @@ def snapshot(args){
 */
 
 def uploadSpec(args){
-    def server = Artifactory.newServer url: "http://54.91.243.228:8081/artifactory/", credentialsId: "artifactory-credentials"
+    def server = Artifactory.newServer url: "http://18.212.136.163:8081/", credentialsId: "artifactory-credentials"
     sh "pwd"
     def uploadSpec =
      """{
       "files": [
            {
              "pattern": "*.zip",
-             "target": "hack-release-repo/"
+             "target": "artifactory-build-info/"
            }  
          ]
         }"""
