@@ -191,7 +191,7 @@ def uploadSpec(args){
       "files": [
            {
              "pattern": "*.zip",
-             "target": "artifactory-build-info/"
+             "target": "example-repo-local/"
            }  
          ]
         }"""
