@@ -9,13 +9,13 @@ set reponame = $4
 
 pass="$password"
 
-if [[ "${pass}" =~ "@" ]] ;then
+if [ "${pass}" ==~ "@" ] ;then
 	replace="%40"
 	p=$(echo ${pass/@/$replace})
 	pass=$p
 fi
 
-if [[ "${user}" =~ "@" ]] ;then
+if [ "${user}" ==~ "@" ] ;then
 	replace="%40"
 	p=$(echo ${user/@/$replace})
 	user=$p
