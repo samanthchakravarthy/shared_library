@@ -1,25 +1,23 @@
 #!/bin/bash
+
 set -e
 echo "heloo"
 
 set username = $1
-set user = $2
+set userid = $2
 set password = $3
 set reponame = $4
 
 pass="$password"
 
-if [ "${pass}" =~ "@" ] ; then
-	replace="%40"
-	p=$(echo ${pass/@/$replace})
-	pass=$p
-fi
+pass=$(echo ${pass/@/"%40"})
+pass=$(echo ${pass/\?/"%3F"})
+pass=$(echo ${pass/\//"%2F"})
 
-if [ "${user}" =~ "@" ] ; then
-	replace="%40"
-	p=$(echo ${user/@/$replace})
-	user=$p
-fi
+user="$userid"
+
+user=$(echo ${user/@/"%40"})
+
 
 echo "Execute a curl command to create remote repository in the bitbucket"
     
@@ -28,7 +26,7 @@ curl -X POST -H "Content-Type: application/json" \
 -d '{"scm": "git"}'
         
 
-git config --global user.email $user
+git config --global user.email $userid
 git config --global user.name $username
 
 echo "Clone the remote repository"
