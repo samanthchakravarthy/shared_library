@@ -50,9 +50,9 @@ echo "Add git add/commit/push changes to remote repository"
 
 	git add --all
 	git commit -m "Initial commit"
-	if git push origin master --quiet 2> /dev/null; then
-		echo "pushed the sourcecode to master"
-	fi
+	git push origin master
+	echo "pushed the sourcecode to master"
+	
 
 echo "create a develop branch locally"
 
@@ -60,9 +60,9 @@ echo "create a develop branch locally"
 
 echo "push develop branch to remote repository"
 	
-	if git push --set-upstream origin develop --quiet 2> /dev/null; then
+	git push --set-upstream origin develop
 	echo "pushed the sourcecode to develop"
-	fi
+
 
 echo "Execute a curl command to set branch permissions"
 
