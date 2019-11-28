@@ -11,10 +11,13 @@ userName = "admin"
 password = "admin"
 jenkins_job_name = sys.argv[1]
 jenkinsUrl = sys.argv[2]
-credential_Id = sys.arg[[23
+credential_Id = sys.arg[3]
 
+try:
+    jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
+except:
+    print("Invalid Credentials or Jenkins url")
 
-jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
 tree = ET.parse('template/multibranch.xml')
 root = tree.getroot()
 
