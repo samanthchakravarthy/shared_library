@@ -33,7 +33,7 @@ echo "Clone the remote repository"
 
 
 
-if git clone https://$username@bitbucket.org/$username/$reponame.git 2> /dev/null; then
+if git clone https://"$user":"$pass"@bitbucket.org/$username/$reponame.git 2> /dev/null; then
 	echo "Clone the remote repository"
 else
     echo "Invalid credentials or project key"
