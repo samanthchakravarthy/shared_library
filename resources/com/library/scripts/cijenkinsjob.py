@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 import requests
 
 userName = "admin"
-password = "admin"
+password = "11fc632b09259098c02a1f1bfc5b794040"
 jenkins_job_name = sys.argv[1]
 jenkinsUrl = sys.argv[2]
 credential_Id = sys.argv[3]
