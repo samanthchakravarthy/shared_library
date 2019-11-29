@@ -20,7 +20,7 @@ except:
 
 os.system('ls -ltR')
 
-tree = ET.parse('template/multibranch.xml')
+tree = ET.parse('resources/com/library/scripts/template/multibranch.xml')
 root = tree.getroot()
 config_file = ET.tostring(root, encoding='utf8', method='xml').decode()
 config_file = config_file.replace('{credential_Id}', credential_Id)
