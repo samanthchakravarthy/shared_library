@@ -3,7 +3,7 @@ this script creates a jenkins job from an xml file
 '''
 
 import jenkins
-import sys
+import os,sys
 import xml.etree.ElementTree as ET
 import requests
 
@@ -18,10 +18,10 @@ try:
 except:
     print("Invalid Credentials or Jenkins url")
 
+os.system('ls -ltR')
+
 tree = ET.parse('template/multibranch.xml')
 root = tree.getroot()
-
-
 config_file = ET.tostring(root, encoding='utf8', method='xml').decode()
 config_file = config_file.replace('{credential_Id}', credential_Id)
 config_file = config_file.replace('{jenkins_job_name}', jenkins_job_name)
