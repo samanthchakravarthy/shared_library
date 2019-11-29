@@ -31,12 +31,12 @@ root = tree.getroot()
 config_file = ET.tostring(root, encoding='utf8', method='xml').decode()
 config_file = config_file.replace('{credential_Id}', credential_Id)
 config_file = config_file.replace('{jenkins_job_name}', jenkins_job_name)
-tree.write('newpipeline.xml')
+tree.write('config.xml')
 
 os.system("pwd")
 os.system("ls -ltR")
 headers = {"Content-Type": "text/xml", "Jenkins-Crumb": crumb_id}
-payload = ( ('file0', open("/var/lib/jenkins/workspace/create_repo/newpipeline.xml", "rb")), ('json', '{ "parameter": [ {"name":"/var/lib/jenkins/workspace/create_repo", "file":"file0" }]}' ))
+payload = ( ('file0', open("/var/lib/jenkins/workspace/create_repo/config.xml", "rb")), ('json', '{ "parameter": [ {"name":"/var/lib/jenkins/workspace/create_repo", "file":"file0" }]}' ))
 #files = {'file': open('newitems.xml', 'rb')}
 
 #try:
