@@ -23,7 +23,7 @@ crumb_response = requests.get(url = jenkins_url, auth=(userName, password))
 crumb_id = crumb_response.text.split(':')[1]
 
 print("crumb_id :",crumb_id)
-jenkins_url = jenkinsUrl+"/job/JOB_NAME/build"
+jenkins_url = jenkinsUrl+"/job/"+jenkins_job_name+"/build"
 
 tree = ET.parse('resources/com/library/scripts/template/multibranch.xml')
 root = tree.getroot()
@@ -47,5 +47,5 @@ files = {'file': open('newitems.xml', 'rb')}
 
 
 resp = requests.post(jenkins_url, auth=('username','password'), headers=headers, files=files)
-
+print(resp)
 #print(jenkins_obj.create_job(jenkins_job_name, config_file)) # create Jenkins jobs
