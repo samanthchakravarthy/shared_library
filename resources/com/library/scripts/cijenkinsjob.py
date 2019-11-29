@@ -17,36 +17,12 @@ jenkinsUrl = sys.argv[2]
 credential_Id = sys.argv[3]
 
 
+# api to generate crumb_id
+jenkins_url = jenkinsUrl +"/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,%22:%22,//crumb)"
+crumb_response = requests.get(url = jenkins_url, auth=(userName, password))
+crumb_id = crumb_response.text.split(':')[1]
 
-
-def build_jenkins_job(url, username, password):
-    """Post to the specified Jenkins URL.
-
-    `username` is a valid user, and `password` is the user's password or
-    (preferably) hex API token.
-    """
-    # Build the Jenkins crumb issuer URL
-    parsed_url = urllib.parse.urlparse(url)
-    crumb_issuer_url = urllib.parse.urlunparse((parsed_url.scheme,
-                                                parsed_url.netloc,
-                                                'crumbIssuer/api/json',
-                                                '', '', ''))
-
-    # Get the Jenkins crumb
-    auth = requests.auth.HTTPBasicAuth(username, password)
-    r = requests.get(crumb_issuer_url, auth=auth)
-    json = r.json()
-    crumb = {json['crumbRequestField']: json['crumb']}
-    print("['crumb']" , crumb)
-    # POST to the specified URL
-    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-    headers.update(crumb)
-    r = requests.post(url, headers=headers, auth=auth)
-
-username = 'jenkins'
-password = '3905697dd052ad99661d9e9f01d4c045'
-url = jenkinsUrl 
-build_jenkins_job(url, userName, password)
+print("crumb_id :",crumb_id)
 
 try:
     jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
@@ -59,4 +35,4 @@ root = tree.getroot()
 config_file = ET.tostring(root, encoding='utf8', method='xml').decode()
 config_file = config_file.replace('{credential_Id}', credential_Id)
 config_file = config_file.replace('{jenkins_job_name}', jenkins_job_name)
-print(jenkins_obj.create_job(jenkins_job_name, config_file)) # create Jenkins jobs
+#print(jenkins_obj.create_job(jenkins_job_name, config_file)) # create Jenkins jobs
