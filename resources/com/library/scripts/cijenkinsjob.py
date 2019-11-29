@@ -32,12 +32,11 @@ config_file = config_file.replace('{credential_Id}', credential_Id)
 config_file = config_file.replace('{jenkins_job_name}', jenkins_job_name)
 
 myfile = open("mbpj.xml", "w")
-myfile.write(myfile)
+myfile.write(config_file)
 
 os.system("ls -ltR")
 headers = {"Content-Type": "application/x-www-form-urlencoded", "Jenkins-Crumb": crumb_id}
-payload = ( ('file0', open("mbpj.xml", "rb")),
-            ('json', '{ "parameter": [ {"name":"mbpj.xml", "file":"file0" }]}' ))
+payload = ( ('file0', open("mbpj.xml", "rb")), ('json', '{ "parameter": [ {"name":"mbpj.xml", "file":"file0" }]}' ))
 
 
 #try:
