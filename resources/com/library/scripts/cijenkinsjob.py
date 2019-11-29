@@ -11,7 +11,7 @@ import urllib.parse
 
 userName = "admin"
 #11fc632b09259098c02a1f1bfc5b794040
-password = "11fc632b09259098c02a1f1bfc5b794040"
+password = "admin"
 jenkins_job_name = sys.argv[1]
 jenkinsUrl = sys.argv[2]
 credential_Id = sys.argv[3]
@@ -25,6 +25,7 @@ crumb_id = crumb_response.text.split(':')[1]
 print("crumb_id :",crumb_id)
 jenkins_url = jenkinsUrl+"/job/"+jenkins_job_name+"/build"
 
+print(jenkins_url)
 tree = ET.parse('resources/com/library/scripts/template/multibranch.xml')
 root = tree.getroot()
 config_file = ET.tostring(root, encoding='utf8', method='xml').decode()
@@ -35,8 +36,8 @@ tree.write('newitems.xml')
 os.system("pwd")
 os.system("ls -ltR")
 headers = {"Content-Type": "application/x-www-form-urlencoded", "Jenkins-Crumb": crumb_id}
-#payload = ( ('file0', open("/var/lib/jenkins/workspace/create_repo/newitems.xml", "rb")), ('json', '{ "parameter": [ {"name":"/var/lib/jenkins/workspace/create_repo", "file":"file0" }]}' ))
-files = {'file': open('newitems.xml', 'rb')}
+payload = ( ('file0', open("/var/lib/jenkins/workspace/create_repo/newitems.xml", "rb")), ('json', '{ "parameter": [ {"name":"/var/lib/jenkins/workspace/create_repo", "file":"file0" }]}' ))
+#files = {'file': open('newitems.xml', 'rb')}
 
 #try:
 #    jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
@@ -46,6 +47,6 @@ files = {'file': open('newitems.xml', 'rb')}
 
 
 
-resp = requests.post(jenkins_url, auth=('username','password'), headers=headers, files=files)
+resp = requests.post(jenkins_url, auth=('username','password'), headers=headers, files=payload)
 print(resp)
 #print(jenkins_obj.create_job(jenkins_job_name, config_file)) # create Jenkins jobs
