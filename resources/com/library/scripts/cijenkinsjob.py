@@ -35,8 +35,8 @@ tree.write('newitems.xml')
 os.system("pwd")
 os.system("ls -ltR")
 headers = {"Content-Type": "application/x-www-form-urlencoded", "Jenkins-Crumb": crumb_id}
-payload = ( ('newitems.xml', open("/var/lib/jenkins/workspace/create_repo", "rb")), ('json', '{ "parameter": [ {"name":"/var/lib/jenkins/workspace/create_repo", "file":"newitems.xml" }]}' ))
-
+#payload = ( ('file0', open("/var/lib/jenkins/workspace/create_repo/newitems.xml", "rb")), ('json', '{ "parameter": [ {"name":"/var/lib/jenkins/workspace/create_repo", "file":"file0" }]}' ))
+files = {'file': open('newitems.xml', 'rb')}
 
 #try:
 #    jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
@@ -46,6 +46,6 @@ payload = ( ('newitems.xml', open("/var/lib/jenkins/workspace/create_repo", "rb"
 
 
 
-resp = requests.post(jenkins_url, auth=('username','password'), headers=headers, files=payload)
+resp = requests.post(jenkins_url, auth=('username','password'), headers=headers, files=files)
 
 #print(jenkins_obj.create_job(jenkins_job_name, config_file)) # create Jenkins jobs
