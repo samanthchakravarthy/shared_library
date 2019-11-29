@@ -46,7 +46,7 @@ def build_jenkins_job(url, username, password):
 username = 'jenkins'
 password = '3905697dd052ad99661d9e9f01d4c045'
 url = jenkinsUrl 
-build_jenkins_job(url, username, password)
+build_jenkins_job(url, userName, password)
 
 try:
     jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
