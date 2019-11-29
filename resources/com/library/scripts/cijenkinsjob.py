@@ -37,9 +37,7 @@ myfile.write(mbpj)
 os.system("ls -ltR")
 headers = {"Content-Type": "application/x-www-form-urlencoded", "Jenkins-Crumb": crumb_id}
 payload = ( ('file0', open(myfile, "rb")),
-            ('json', '{ "parameter": [ {
-                                         "name":"myfile",
-                                         "file":"file0" }]}' ))
+            ('json', '{ "parameter": [ {"name":"myfile", "file":"file0" }]}' ))
 
 
 #try:
