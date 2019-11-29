@@ -11,7 +11,7 @@ import urllib.parse
 
 userName = "admin"
 #11fc632b09259098c02a1f1bfc5b794040
-password = "admin"
+password ="11fc632b09259098c02a1f1bfc5b794040"
 jenkins_job_name = sys.argv[1]
 jenkinsUrl = sys.argv[2]
 credential_Id = sys.argv[3]
@@ -23,7 +23,7 @@ crumb_response = requests.get(url = jenkins_url, auth=(userName, password))
 crumb_id = crumb_response.text.split(':')[1]
 
 print("crumb_id :",crumb_id)
-jenkins_url = jenkinsUrl+"/createItem?name="+jenkins_job_name
+jenkins_url = jenkinsUrl+"createItem?name="+jenkins_job_name
 
 print(jenkins_url)
 tree = ET.parse('resources/com/library/scripts/template/multibranch.xml')
