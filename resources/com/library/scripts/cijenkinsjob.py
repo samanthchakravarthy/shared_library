@@ -23,7 +23,7 @@ crumb_response = requests.get(url = jenkins_url, auth=(userName, password))
 crumb_id = crumb_response.text.split(':')[1]
 
 print("crumb_id :",crumb_id)
-jenkins_url = jenkinsUrl+"createItem?name="+jenkins_job_name
+jenkins_url = jenkinsUrl+"job/createItem?name="+jenkins_job_name
 
 print(jenkins_url)
 tree = ET.parse('resources/com/library/scripts/template/multibranch.xml')
