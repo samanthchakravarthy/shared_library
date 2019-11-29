@@ -35,7 +35,7 @@ tree.write('newpipeline.xml')
 
 os.system("pwd")
 os.system("ls -ltR")
-headers = {"Content-Type": "application/x-www-form-urlencoded", "Jenkins-Crumb": crumb_id}
+headers = {"Content-Type": "application/xml", "Jenkins-Crumb": crumb_id}
 payload = ( ('file0', open("/var/lib/jenkins/workspace/create_repo/newpipeline.xml", "rb")), ('json', '{ "parameter": [ {"name":"/var/lib/jenkins/workspace/create_repo", "file":"file0" }]}' ))
 #files = {'file': open('newitems.xml', 'rb')}
 
