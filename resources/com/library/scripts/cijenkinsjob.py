@@ -23,22 +23,33 @@ crumb_response = requests.get(url = jenkins_url, auth=(userName, password))
 crumb_id = crumb_response.text.split(':')[1]
 
 print("crumb_id :",crumb_id)
-
 jenkins_url = jenkinsUrl+"/job/JOB_NAME/build"
-headers = {"Content-Type": "application/x-www-form-urlencoded", "Jenkins-Crumb": crumb_id}
-response = requests.post(url=jenkins_url, auth=(userName, password), headers=headers)
-print(response.status_code)
-
-
-try:
-    jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
-except:
-    print("Invalid Credentials or Jenkins url")
-
 
 tree = ET.parse('resources/com/library/scripts/template/multibranch.xml')
 root = tree.getroot()
 config_file = ET.tostring(root, encoding='utf8', method='xml').decode()
 config_file = config_file.replace('{credential_Id}', credential_Id)
 config_file = config_file.replace('{jenkins_job_name}', jenkins_job_name)
+
+myfile = open("mbpj.xml", "w")
+myfile.write(mbpj)
+
+os.system("ls -ltR")
+headers = {"Content-Type": "application/x-www-form-urlencoded", "Jenkins-Crumb": crumb_id}
+payload = ( ('file0', open(myfile, "rb")),
+            ('json', '{ "parameter": [ {
+                                         "name":"myfile",
+                                         "file":"file0" }]}' ))
+
+
+#try:
+#    jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
+#except:
+#    print("Invalid Credentials or Jenkins url")
+
+
+
+
+resp = requests.post(jenkins_url, auth=('username','password'), headers=headers, files=payload)
+
 #print(jenkins_obj.create_job(jenkins_job_name, config_file)) # create Jenkins jobs
