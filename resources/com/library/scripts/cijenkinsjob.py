@@ -11,7 +11,7 @@ userName = "admin"
 password = "admin"
 jenkins_job_name = sys.argv[1]
 jenkinsUrl = sys.argv[2]
-credential_Id = sys.arg[3]
+credential_Id = sys.argv[3]
 
 try:
     jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
