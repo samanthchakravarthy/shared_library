@@ -35,7 +35,7 @@ tree.write('newitems.xml')
 os.system("pwd")
 os.system("ls -ltR")
 headers = {"Content-Type": "application/x-www-form-urlencoded", "Jenkins-Crumb": crumb_id}
-payload = ( ('newitems.xml', open("mbpj.xml", "rb")), ('json', '{ "parameter": [ {"name":"mbpj.xml", "file":"newitems.xml" }]}' ))
+payload = ( ('newitems.xml', open("/var/lib/jenkins/workspace/create_repo", "rb")), ('json', '{ "parameter": [ {"name":"/var/lib/jenkins/workspace/create_repo", "file":"newitems.xml" }]}' ))
 
 
 #try:
