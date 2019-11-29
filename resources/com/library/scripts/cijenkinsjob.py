@@ -24,6 +24,12 @@ crumb_id = crumb_response.text.split(':')[1]
 
 print("crumb_id :",crumb_id)
 
+
+headers = {"Content-Type": "application/x-www-form-urlencoded", "Jenkins-Crumb": crumb_id}
+response = requests.post(url=jenkins_url, auth=(userName, password), headers=headers)
+print(response.status_code)
+
+
 try:
     jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
 except:
@@ -35,4 +41,4 @@ root = tree.getroot()
 config_file = ET.tostring(root, encoding='utf8', method='xml').decode()
 config_file = config_file.replace('{credential_Id}', credential_Id)
 config_file = config_file.replace('{jenkins_job_name}', jenkins_job_name)
-#print(jenkins_obj.create_job(jenkins_job_name, config_file)) # create Jenkins jobs
+print(jenkins_obj.create_job(jenkins_job_name, config_file)) # create Jenkins jobs
