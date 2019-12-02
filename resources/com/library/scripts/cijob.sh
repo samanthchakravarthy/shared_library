@@ -20,8 +20,8 @@ echo $CRUMB
 
 curl -X GET "$jenkinsUrl/job/java-pipeline/config.xml" -u "$username":"$API_TOKEN" -o mylocalconfig.xml
 
-ls -ltR
-cat mylocalconfig.xml
+#ls -ltR
+#cat mylocalconfig.xml
 
 echo "reading a file"
 
@@ -31,4 +31,6 @@ while read a; do
 done < mylocalconfig.xml > mylocalconfig.xml.t
 mv mylocalconfig.xml{.t,}
 
-cat mylocalconfig.xml
+#cat mylocalconfig.xml
+
+curl -s -XPOST "$jenkinsUrl/createItem?name=yourJobName" -u "$username":"$API_TOKEN" --data-binary @mylocalconfig.xml -H "$CRUMB" -H "Content-Type:text/xml"
