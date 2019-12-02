@@ -33,4 +33,7 @@ done < mylocalconfig.xml > localconfig.xml
 
 #cat mylocalconfig.xml
 
-curl -s -XPOST "$jenkinsUrl/createItem?name=yourJobName" -u "$username":"$API_TOKEN" --data-binary @localconfig.xml -H "$CRUMB" -H "Content-Type:text/xml"
+curl -s -X POST "$jenkinsUrl/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data-binary @localconfig.xml -H "$CRUMB" -H "Content-Type:application/xml"
+
+
+#curl -X POST -H "$CRUMB" -H "content-type:application/xml" --data "@/resources/com/library/scripts/template/multibranch.xml" "$jenkinsUrl/createItem?name=""" --trace-ascii /dev/stdout 
