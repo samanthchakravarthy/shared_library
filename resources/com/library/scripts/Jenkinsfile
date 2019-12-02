@@ -1,0 +1,12 @@
+@Library('shared_library@master')
+import com.library.*
+
+set reponame = $1
+set technology = $2
+
+
+args = [:]
+args.repoName = "$reponame"
+args.lang="$technology"
+
+new main().start(args)

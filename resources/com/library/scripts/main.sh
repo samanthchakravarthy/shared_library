@@ -9,10 +9,12 @@ set repocreation = $5
 set jenkinsUrl = $6
 set credential_Id = $7
 set CIJenkinsjobCreation = $8
+set technology = $9
 
 
 if [ "$repocreation" = true ] ; then
 set +x      # turn off echo
+bash resources/com/library/scripts/Jenkinsfile $reponame $technology
 bash resources/com/library/scripts/bitbucket.sh $username $userid $password $reponame
 set -x      # turn on echo
 echo "Creation of repo completed"

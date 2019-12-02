@@ -18,21 +18,10 @@ if test -e localconfig.xml; then
 	rm localconfig.xml
 fi
 
-ls
-
-#CRUMB=$(curl -s -u "$username":"$API_TOKEN" "$jenkinsUrl/crumbIssuer/api/json")
-
 CRUMB=$(curl -s ''$jenkinsUrl'/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u "$username":"$API_TOKEN")
-
-
 echo $CRUMB
 
 curl -X GET "$jenkinsUrl/job/java-pipeline/config.xml" -u "$username":"$API_TOKEN" -o mylocalconfig.xml
-
-#ls -ltR
-#cat mylocalconfig.xml
-
-echo "reading a file"
 
 
 while read a; do
@@ -40,11 +29,8 @@ while read a; do
 done < mylocalconfig.xml > localconfig.xml
 echo "</org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject>" >> localconfig.xml
 
-
-
-cat localconfig.xml
+#cat localconfig.xml
 
 curl -X POST "$jenkinsUrl/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/xml"
 
-
-#curl -X POST -H "$CRUMB" -H "content-type:application/xml" --data "@/resources/com/library/scripts/template/multibranch.xml" "$jenkinsUrl/createItem?name=""" --trace-ascii /dev/stdout 
+ 
