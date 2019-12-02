@@ -38,7 +38,7 @@ echo "reading a file"
 while read a; do
     echo ${a//"snowball.git"/"$reponame.git"}
 done < mylocalconfig.xml > localconfig.xml
-"</org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject>" >> localconfig.xml
+echo "</org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject>" >> localconfig.xml
 
 
 
