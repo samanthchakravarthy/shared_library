@@ -27,7 +27,7 @@ echo "reading a file"
 
 
 while read a; do
-    echo ${a//abc/XYZ}
+    echo ${a//"snowball.git"/"$reponame.git"}
 done < mylocalconfig.xml > mylocalconfig.xml.t
 mv mylocalconfig.xml{.t,}
 
