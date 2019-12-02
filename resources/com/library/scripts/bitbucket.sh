@@ -7,6 +7,7 @@ set username = $1
 set userid = $2
 set password = $3
 set reponame = $4
+set technology = $5
 
 pass="$password"
 
@@ -45,6 +46,10 @@ echo "Add files"
     
 	touch readme.md
 	touch .gitignore
+	while read a; do
+	    echo ${a//"reponame"/"$reponame"}
+	    echo ${a//"technology"/"$technology"}
+	done < Jenkinsfile > Jenkinsfile
 	cd ../Jenkinsfile Jenkinsfile 
 
 echo "Add git add/commit/push changes to remote repository"

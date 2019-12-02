@@ -2,7 +2,7 @@
 import com.library.*
 
 args = [:]
-args.repoName = "$1"
-args.lang="$2"
+args.repoName ="reponame"
+args.lang="technology"
 
 new main().start(args)

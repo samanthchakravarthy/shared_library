@@ -14,8 +14,7 @@ set technology = $9
 
 if [ "$repocreation" = true ] ; then
 set +x      # turn off echo
-bash resources/com/library/scripts/Jenkinsfile $reponame $technology
-bash resources/com/library/scripts/bitbucket.sh $username $userid $password $reponame
+bash resources/com/library/scripts/bitbucket.sh $username $userid $password $reponame $technology
 set -x      # turn on echo
 echo "Creation of repo completed"
 sleep 10
@@ -24,7 +23,6 @@ fi
 if [ "$CIJenkinsjobCreation" = true ] ; then
 set +x      # turn off echo
 bash resources/com/library/scripts/cijob.sh $reponame $jenkinsUrl $credential_Id
-#python resources/com/library/scripts/cijenkinsjob.py $reponame $jenkinsUrl $credential_Id
 set -x      # turn on echo
 echo "CI multibranch pipeline job created successfully"
 sleep 10
