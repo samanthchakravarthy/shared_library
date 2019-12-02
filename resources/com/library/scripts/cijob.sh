@@ -22,3 +22,13 @@ curl -X GET "$jenkinsUrl/job/java-pipeline/config.xml" -u "$username":"$API_TOKE
 
 ls -ltR
 cat mylocalconfig.xml
+
+echo "reading a file"
+
+
+while read a; do
+    echo ${a//abc/XYZ}
+done < mylocalconfig.xml > mylocalconfig.xml.t
+mv mylocalconfig.xml{.t,}
+
+cat mylocalconfig.xml
