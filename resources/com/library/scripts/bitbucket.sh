@@ -49,8 +49,9 @@ echo "Add files"
 	while read a; do
 	    echo ${a//"reponame"/"$reponame"}
 	    echo ${a//"technology"/"$technology"}
-	done < Jenkinsfile > Jenkinsfile
-	cd ../Jenkinsfile Jenkinsfile 
+	done < ../Jenkinsfile1 > Jenkinsfile
+
+cat Jenkinsfile
 
 echo "Add git add/commit/push changes to remote repository"
 
