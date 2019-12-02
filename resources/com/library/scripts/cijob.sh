@@ -11,9 +11,9 @@ API_TOKEN="11fc632b09259098c02a1f1bfc5b794040"
 echo "hello"
 
 
-#CRUMB=$(curl -s -u "$username":"$API_TOKEN" "$jenkinsUrl/crumbIssuer/api/json")
+CRUMB=$(curl -s -u "$username":"$API_TOKEN" "$jenkinsUrl/crumbIssuer/api/xml")
 
-CRUMB=$(curl -s ''$jenkinsUrl'/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u "$username":"$API_TOKEN")
+#CRUMB=$(curl -s ''$jenkinsUrl'/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u "$username":"$API_TOKEN")
 
 
 echo $CRUMB
