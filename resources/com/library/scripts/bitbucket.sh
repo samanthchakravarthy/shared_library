@@ -48,8 +48,15 @@ echo "Add files"
 	touch .gitignore
 	while read a; do
 	    echo ${a//"reponame"/"$reponame"}
+	done < ../resources/com/library/scripts/Jenkinsfile1 > Jenkinsfile2
+	while read a; do
 	    echo ${a//"technology"/"$technology"}
-	done < ../resources/com/library/scripts/Jenkinsfile1 > Jenkinsfile
+	done < Jenkinsfile2 > Jenkinsfile
+
+        if test -e Jenkinsfile2; then
+		rm Jenkinsfile2
+	fi
+
 
 cat Jenkinsfile
 
