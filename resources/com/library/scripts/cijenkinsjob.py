@@ -36,17 +36,17 @@ tree.write('config.xml')
 os.system("pwd")
 os.system("ls -ltR")
 headers = {"Content-Type": "text/xml", "Jenkins-Crumb": crumb_id}
-payload = ( ('file0', open("/var/lib/jenkins/workspace/create_repo/config.xml", "rb")), ('json', '{ "parameter": [ {"name":"/var/lib/jenkins/workspace/create_repo", "file":"file0" }]}' ))
+payload = ( ('file0', open("@/var/lib/jenkins/workspace/create_repo/config.xml", "rb")), ('json', '{ "parameter": [ {"name":"task.xml", "file":"file0" }]}' ))
 #files = {'file': open('newitems.xml', 'rb')}
 
-try:
-    jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
-except:
-    print("Invalid Credentials or Jenkins url")
+#try:
+#    jenkins_obj = jenkins.Jenkins(jenkinsUrl, userName, password)
+#except:
+#    print("Invalid Credentials or Jenkins url")
 
 
 
 
 resp = requests.post(jenkins_url, auth=('username','password'), headers=headers, files=payload)
 print(resp)
-print(jenkins_obj.create_job(jenkins_job_name, config_file)) # create Jenkins jobs
+#print(jenkins_obj.create_job(jenkins_job_name, config_file)) # create Jenkins jobs

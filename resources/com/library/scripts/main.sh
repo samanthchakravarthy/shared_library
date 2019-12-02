@@ -21,7 +21,8 @@ fi
 
 if [ "$CIJenkinsjobCreation" = true ] ; then
 set +x      # turn off echo
-python resources/com/library/scripts/cijenkinsjob.py $reponame $jenkinsUrl $credential_Id
+bash resources/com/library/scripts/cijob.sh $reponame $jenkinsUrl $credential_Id
+#python resources/com/library/scripts/cijenkinsjob.py $reponame $jenkinsUrl $credential_Id
 set -x      # turn on echo
 echo "CI multibranch pipeline job created successfully"
 sleep 10
