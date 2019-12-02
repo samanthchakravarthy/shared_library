@@ -21,4 +21,4 @@ echo $CRUMB
 curl -X GET "$jenkinsUrl/job/java-pipeline/config.xml" -u "$username":"$API_TOKEN" -o mylocalconfig.xml
 
 ls -ltR
-cat ylocalconfig.xml
+cat mylocalconfig.xml
