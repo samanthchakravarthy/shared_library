@@ -10,6 +10,14 @@ API_TOKEN="11fc632b09259098c02a1f1bfc5b794040"
 
 echo "hello"
 
+if test -e mylocalconfig.xml; then
+	rm mylocalconfig.xml
+fi
+
+if test -e localconfig.xml; then
+	rm localconfig.xml
+fi
+
 
 #CRUMB=$(curl -s -u "$username":"$API_TOKEN" "$jenkinsUrl/crumbIssuer/api/json")
 
