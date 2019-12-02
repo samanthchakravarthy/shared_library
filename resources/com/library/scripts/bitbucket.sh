@@ -49,7 +49,7 @@ echo "Add files"
 	while read a; do
 	    echo ${a//"reponame"/"$reponame"}
 	    echo ${a//"technology"/"$technology"}
-	done < ../Jenkinsfile1 > Jenkinsfile
+	done < ../resources/com/library/scripts/Jenkinsfile1 > Jenkinsfile
 
 cat Jenkinsfile
 
