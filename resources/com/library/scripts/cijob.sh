@@ -31,7 +31,7 @@ while read a; do
 done < mylocalconfig.xml > localconfig.xml
 #mv mylocalconfig.xml{.t,}
 
-#cat mylocalconfig.xml
+cat mylocalconfig.xml
 
 curl -X POST "$jenkinsUrl/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/xml"
 
