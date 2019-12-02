@@ -18,6 +18,7 @@ if test -e localconfig.xml; then
 	rm localconfig.xml
 fi
 
+ls
 
 #CRUMB=$(curl -s -u "$username":"$API_TOKEN" "$jenkinsUrl/crumbIssuer/api/json")
 
@@ -39,7 +40,7 @@ while read a; do
 done < mylocalconfig.xml > localconfig.xml
 #mv mylocalconfig.xml{.t,}
 
-cat mylocalconfig.xml
+cat localconfig.xml
 
 curl -X POST "$jenkinsUrl/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/xml"
 
