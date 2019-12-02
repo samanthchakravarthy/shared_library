@@ -45,6 +45,7 @@ echo "Add files"
     
 	touch readme.md
 	touch .gitignore
+	cd ../Jenkinsfile Jenkinsfile 
 
 echo "Add git add/commit/push changes to remote repository"
 
