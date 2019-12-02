@@ -8,6 +8,7 @@ set credential_Id = $3
 username="admin"
 API_TOKEN="11fc632b09259098c02a1f1bfc5b794040"
 
+echo "hello"
 
 CRUMB=$(curl -s '$jenkinsUrl/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u $username:$API_TOKEN)
 echo $CRUMB
