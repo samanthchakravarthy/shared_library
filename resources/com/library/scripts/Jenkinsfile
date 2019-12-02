@@ -1,12 +1,8 @@
 @Library('shared_library@master')
 import com.library.*
 
-set reponame = $1
-set technology = $2
-
-
 args = [:]
-args.repoName = "$reponame"
-args.lang="$technology"
+args.repoName = "$1"
+args.lang="$2"
 
 new main().start(args)
