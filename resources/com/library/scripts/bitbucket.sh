@@ -48,17 +48,13 @@ echo "Add files"
 if test $technology == "python"; then
 	cp -r -a ../resources/com/library/scripts/python/ .
 	cd python
-	pwd
 	touch readme.md
 	touch .gitignore
-	ls -ltR
 	while read a; do
 		echo ${a//"reponame"/"$reponame"}
-	done < Jenkinsfile1 > Jenkinsfile
-	rm Jenkinsfile1
-	
+	done < Jenkinsfile1 > Jenkinsfile	
 fi
-ls
+
 
 if test $technology == "java"; then
 	cp -r -a ../resources/com/library/scripts/java/ .
@@ -67,16 +63,18 @@ if test $technology == "java"; then
 	touch .gitignore
 	while read a; do
 	 	echo ${a//"reponame"/"$reponame"}
-	done < ../resources/com/library/scripts/java/Jenkinsfile1 > Jenkinsfile
+	done < Jenkinsfile1 > Jenkinsfile
 fi
 
 if test -e Jenkinsfile1; then
 	rm Jenkinsfile1
 fi
 
+ls
+
 cd ..
 
-cat Jenkinsfile
+
 
 echo "Add git add/commit/push changes to remote repository"
 
