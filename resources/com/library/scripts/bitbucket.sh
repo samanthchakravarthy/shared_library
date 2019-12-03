@@ -47,7 +47,6 @@ echo "Add files"
 
 if test $technology == "python"; then
 	cp -r -a ../resources/com/library/scripts/python/. .
-	cd python
 	touch readme.md
 	touch .gitignore
 	while read a; do
@@ -58,8 +57,6 @@ fi
 
 if test $technology == "java"; then
 	cp -r -a ../resources/com/library/scripts/java/. .
-        ls
-	cd java
 	touch readme.md
 	touch .gitignore
 	while read a; do
@@ -73,7 +70,6 @@ fi
 
 ls
 
-cd ..
 
 
 
