@@ -50,9 +50,10 @@ if test $technology == "python"; then
 	cd python
 	touch readme.md
 	touch .gitignore
+	ls -ltR
 	while read a; do
 		echo ${a//"reponame"/"$reponame"}
-	done < ../resources/com/library/scripts/python/Jenkinsfile1 > Jenkinsfile
+	done < Jenkinsfile1 > Jenkinsfile
 	
 fi
 
