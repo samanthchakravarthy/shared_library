@@ -2,8 +2,7 @@
 import com.library.*
 
 args = [:]
-args.repoName = "snowball"
-args.lang="java"
+args.repoName = "reponame"
+args.lang="python"
 
 new main().start(args)
-

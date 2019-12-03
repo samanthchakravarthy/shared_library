@@ -46,17 +46,14 @@ echo "Add files"
     
 	touch readme.md
 	touch .gitignore
-	while read a; do
-	    echo ${a//"reponame"/"$reponame"}
-	done < ../resources/com/library/scripts/Jenkinsfile1 > Jenkinsfile2
-	while read a; do
-	    echo ${a//"technology"/"$technology"}
-	done < Jenkinsfile2 > Jenkinsfile
-
-        if test -e Jenkinsfile2; then
-		rm Jenkinsfile2
-	fi
-
+	if test "$technology" == "python"
+		while read a; do
+	    		echo ${a//"reponame"/"$reponame"}
+		done < ../resources/com/library/scripts/python/Jenkinsfile1 > Jenkinsfile
+	if test "$technology" == "java"
+		while read a; do
+	    		echo ${a//"reponame"/"$reponame"}
+		done < ../resources/com/library/scripts/java/Jenkinsfile1 > Jenkinsfile
 
 cat Jenkinsfile
 
