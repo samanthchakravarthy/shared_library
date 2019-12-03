@@ -58,6 +58,7 @@ fi
 
 if test $technology == "java"; then
 	cp -r -a ../resources/com/library/scripts/java/. .
+        ls
 	cd java
 	touch readme.md
 	touch .gitignore
