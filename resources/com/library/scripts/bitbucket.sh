@@ -48,7 +48,6 @@ echo "Add files"
 if test $technology == "python"; then
 	cp -r -a ../resources/com/library/scripts/python/ .
 	cd python
-	rm Jenkinsfile1
 	pwd
 	touch readme.md
 	touch .gitignore
@@ -59,6 +58,7 @@ if test $technology == "python"; then
 	rm Jenkinsfile1
 	
 fi
+ls
 
 if test $technology == "java"; then
 	cp -r -a ../resources/com/library/scripts/java/ .
