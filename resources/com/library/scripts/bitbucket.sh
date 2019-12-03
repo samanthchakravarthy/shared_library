@@ -47,7 +47,9 @@ echo "Add files"
 
 if test $technology == "python"; then
 	cp -r -a ../resources/com/library/scripts/python/ .
+        pwd
 	cd python
+	pwd
 	touch readme.md
 	touch .gitignore
 	ls -ltR
