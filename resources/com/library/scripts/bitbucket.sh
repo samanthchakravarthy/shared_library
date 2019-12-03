@@ -47,7 +47,7 @@ echo "Add files"
 
 if test $technology == "python"; then
 	cp -r -a ../resources/com/library/scripts/python/ .
-        pwd
+	rm Jenkinsfile1
 	cd python
 	pwd
 	touch readme.md
@@ -55,7 +55,7 @@ if test $technology == "python"; then
 	ls -ltR
 	while read a; do
 		echo ${a//"reponame"/"$reponame"}
-	done < Jenkinsfile1 > Jenkinsfile
+	done < "../../resources/com/library/scripts/python/Jenkinsfile1" > Jenkinsfile
 	
 fi
 
