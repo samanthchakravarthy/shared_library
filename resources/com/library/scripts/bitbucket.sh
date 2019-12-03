@@ -47,15 +47,22 @@ echo "Add files"
 touch readme.md
 touch .gitignore
 if test $technology == "python"; then
+	cp -r -a ../resources/com/library/scripts/python/ .
 	while read a; do
 		echo ${a//"reponame"/"$reponame"}
 	done < ../resources/com/library/scripts/python/Jenkinsfile1 > Jenkinsfile
+	
 fi
 
 if test $technology == "java"; then
+	cp -r -a ../resources/com/library/scripts/java/ .
 	while read a; do
 	 	echo ${a//"reponame"/"$reponame"}
 	done < ../resources/com/library/scripts/java/Jenkinsfile1 > Jenkinsfile
+fi
+
+if test -e Jenkinsfile1; then
+	rm Jenkinsfile1
 fi
 
 cat Jenkinsfile
