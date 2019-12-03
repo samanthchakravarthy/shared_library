@@ -44,16 +44,18 @@ cd $reponame
 
 echo "Add files"
     
-	touch readme.md
-	touch .gitignore
-	if test "$technology" == "python"
-		while read a; do
-	    		echo ${a//"reponame"/"$reponame"}
-		done < ../resources/com/library/scripts/python/Jenkinsfile1 > Jenkinsfile
-	if test "$technology" == "java"
-		while read a; do
-	    		echo ${a//"reponame"/"$reponame"}
-		done < ../resources/com/library/scripts/java/Jenkinsfile1 > Jenkinsfile
+touch readme.md
+touch .gitignore
+if test $technology == "python"
+	while read a; do
+		echo ${a//"reponame"/"$reponame"}
+	done < ../resources/com/library/scripts/python/Jenkinsfile1 > Jenkinsfile
+fi
+if test $technology == "java"
+	while read a; do
+	 	echo ${a//"reponame"/"$reponame"}
+	done < ../resources/com/library/scripts/java/Jenkinsfile1 > Jenkinsfile
+fi
 
 cat Jenkinsfile
 
