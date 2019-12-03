@@ -1,0 +1,9 @@
+name: dataquality
+channels:
+- defaults
+dependencies:
+- python=3.6
+- hypothesis
+- pyspark
+- pytz
+- pylint

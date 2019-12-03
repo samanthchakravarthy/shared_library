@@ -1,0 +1,6 @@
+-name: dataquality_unittest
+-channels:
+-- defaults
+-dependencies:
+-- python=3.6
+-- pyspark
