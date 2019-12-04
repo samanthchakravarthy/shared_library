@@ -17,10 +17,12 @@ echo $CRUMB
 
 curl -X GET "$jenkinsUrl/job/test-deploy/config.xml" -u "$username":"$API_TOKEN" -o localconfig.xml
 
+rm localconfig.xml 
+
 curl -X POST "$jenkinsUrl/createItem?name=deploy&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
 echo "deploy folder created successfully"
 
-cat localconfig.xml
+#cat localconfig.xml
 
 for job in DEV QA PROD
 do 
