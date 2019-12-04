@@ -10,6 +10,7 @@ def main(**kwargs):
  CDJenkinsjobCreation=kwargs['CDJenkinsjobCreation']
  username = "admin"
  API_TOKEN = "11fc632b09259098c02a1f1bfc5b794040"
+ password="admin"
 
  cdJob=CDJenkinsjobCreation.split(',')
 
@@ -21,7 +22,7 @@ def main(**kwargs):
  response = requests.post(url=jenkins_url, auth=(username, API_TOKEN), headers=headers)
  print(response)
 
- jenkins_obj = jenkins.Jenkins(jenkinsUrl, username, API_TOKEN, crumb_id)
+ jenkins_obj = jenkins.Jenkins(jenkinsUrl, username, password)
  # template used to create pipeline job
  tree = ET.parse('resources/com/library/scripts/template/deploy_pipelineJob.xml')
  root = tree.getroot()
