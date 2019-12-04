@@ -47,7 +47,11 @@ echo "creating job inside folder"
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=PROD&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
       echo "prod folder created"
 
-    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
+    #curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
+
+cat localconfig.xml | curl -X POST -u "$username":"$API_TOKEN"
+-H "$CRUMB" -H "Content-Type: text/xml" --data  @- "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame"
+
 echo "creating job inside folder"
 
 
@@ -55,9 +59,5 @@ echo "creating job inside folder"
       echo "Skip CD job creation"
    fi  
 done   
-
-
-
-
 
 echo "created cd job"
