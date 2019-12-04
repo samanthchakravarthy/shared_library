@@ -29,7 +29,7 @@ echo "CI multibranch pipeline job created successfully"
 sleep 10
 fi
 
-if [ "$CDJenkinsjobCreation" = true ] ; then
+if [ ! -z "$CDJenkinsjobCreation" ] ; then
 set +x      # turn off echo
 bash resources/com/library/scripts/cdjob.sh $reponame $jenkinsUrl $credential_Id
 set -x      # turn on echo
