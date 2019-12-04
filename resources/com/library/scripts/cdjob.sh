@@ -26,22 +26,36 @@ do
   if [[ $job == 'DEV' ]]; then
       echo $job
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=DEV&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
-      echo "dev folder created"
+      echo "dev folder created "
+
+    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/xml"
+echo "creating job inside folder"
+
   elif [[ $job == 'QA' ]]; then
       echo $job
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=QA&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
       echo "qa folder created"
+
+    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/xml"
+echo "creating job inside folder"
+
+
   elif [[ $job == 'PROD' ]]; then
       echo $job
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=PROD&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
       echo "prod folder created"
+
+    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/xml"
+echo "creating job inside folder"
+
+
    else
       echo "Skip CD job creation"
    fi  
 done   
 
-cat localconfig.xml 
 
-curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/xml"
+
+
 
 echo "created cd job"
