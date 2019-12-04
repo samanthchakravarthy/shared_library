@@ -42,6 +42,6 @@ done
    
 #mylocalconfig.xml > localconfig.xml
 
-curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --form "@/../template/deploy_pipelineJob.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
+curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data "@/../template/deploy_pipelineJob.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
 
 echo "created cd job"
