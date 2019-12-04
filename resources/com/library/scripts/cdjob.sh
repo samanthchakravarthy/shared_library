@@ -49,8 +49,7 @@ echo "creating job inside folder"
 
     #curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
 
-cat localconfig.xml | curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN"
--H "Content-Type: text/xml" --data  @- -H "$CRUMB"
+cat localconfig.xml | curl -H "Content-Type: text/xml" --data  @- -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" -H "$CRUMB"
 
 echo "creating job inside folder"
 
