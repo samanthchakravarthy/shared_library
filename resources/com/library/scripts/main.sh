@@ -31,7 +31,8 @@ fi
 
 if [ ! -z "$CDJenkinsjobCreation" ] ; then
 set +x      # turn off echo
-bash resources/com/library/scripts/cdjob.sh $reponame $jenkinsUrl $credential_Id
+pyargs="reponame=$reponame jenkinsUrl=$jenkinsUrl credential_Id=$credential_Id CDJenkinsjobCreation=$CDJenkinsjobCreation
+python resources/com/library/scripts/cdjob.py $pyargs
 set -x      # turn on echo
 echo "CD multibranch pipeline job created successfully"
 sleep 10
