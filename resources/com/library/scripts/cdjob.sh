@@ -17,10 +17,12 @@ echo $CRUMB
 
 curl -X GET "$jenkinsUrl/job/deploy-demo/config.xml" -u "$username":"$API_TOKEN" -o localconfig.xml
 
+rm localconfig.xml
+
 curl -X POST "$jenkinsUrl/createItem?name=deploy&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
 echo "deploy folder created successfully"
 
-cat localconfig.xml
+#cat localconfig.xml
 
 for job in DEV QA PROD
 do 
@@ -30,7 +32,7 @@ do
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=DEV&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
       echo "dev folder created "
 
-    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@/var/lib/jenkins/workspace/create_repo/resources/com/library/scripts/template/deploy_pipelineJob.xml" -H "$CRUMB" -H "Content-Type:application/xml"
+    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@/var/lib/jenkins/workspace/create_repo/resources/com/library/scripts/template/deploy_pipelineJob.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
 echo "creating job inside folder"
 
   elif [[ $job == 'QA' ]]; then
@@ -38,7 +40,7 @@ echo "creating job inside folder"
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=QA&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
       echo "qa folder created"
 
-    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@/var/lib/jenkins/workspace/create_repo/resources/com/library/scripts/template/deploy_pipelineJob.xml" -H "$CRUMB" -H "Content-Type:application/xml"
+    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@/var/lib/jenkins/workspace/create_repo/resources/com/library/scripts/template/deploy_pipelineJob.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
 echo "creating job inside folder"
 
 
@@ -47,7 +49,7 @@ echo "creating job inside folder"
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=PROD&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
       echo "prod folder created"
 
-curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@/var/lib/jenkins/workspace/create_repo/resources/com/library/scripts/template/deploy_pipelineJob.xml" -H "$CRUMB" -H "Content-Type:text/xml"
+curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@/var/lib/jenkins/workspace/create_repo/resources/com/library/scripts/template/deploy_pipelineJob.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
 
 #cat localconfig.xml | curl -H "Content-Type: text/xml" --data  @- -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" -H "$CRUMB"
 
