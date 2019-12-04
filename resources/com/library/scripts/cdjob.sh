@@ -39,7 +39,9 @@ do
       echo "Skip CD job creation"
    fi  
 done   
-   
+
+cat localconfig.xml 
+
 curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
 
 echo "created cd job"
