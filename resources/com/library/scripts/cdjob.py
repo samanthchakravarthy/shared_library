@@ -8,9 +8,9 @@ def main(**kwargs):
  jenkinsUrl=kwargs['jenkinsUrl']
  credential_Id=kwargs['credential_Id']
  CDJenkinsjobCreation=kwargs['CDJenkinsjobCreation']
- username = "admin"
+ username = "devops"
  API_TOKEN = "11fc632b09259098c02a1f1bfc5b794040"
- password="admin"
+ password="devops"
 
  cdJob=CDJenkinsjobCreation.split(',')
 
