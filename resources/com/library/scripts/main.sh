@@ -31,7 +31,7 @@ fi
 
 if [ ! -z "$CDJenkinsjobCreation" ] ; then
 set +x      # turn off echo
-pyargs="reponame=$reponame jenkinsUrl=$jenkinsUrl credential_Id=$credential_Id CDJenkinsjobCreation=$CDJenkinsjobCreation
+pyargs="reponame=$reponame jenkinsUrl=$jenkinsUrl credential_Id=$credential_Id CDJenkinsjobCreation=$CDJenkinsjobCreation"
 python resources/com/library/scripts/cdjob.py $pyargs
 set -x      # turn on echo
 echo "CD multibranch pipeline job created successfully"
