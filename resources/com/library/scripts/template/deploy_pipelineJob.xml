@@ -35,13 +35,14 @@
         <hudson.model.StringParameterDefinition>
           <name>targetLocation</name>
           <description></description>
-          <defaultValue>&quot;/var/lib/jenkins/workspace/java-deployment-pipeline/&quot;</defaultValue>
+          <defaultValue>'/var/lib/jenkins/workspace/java-deployment-pipeline/'</defaultValue>
           <trim>true</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.76">
+<<<<<<< HEAD
     <script>
 
 pipeline {
