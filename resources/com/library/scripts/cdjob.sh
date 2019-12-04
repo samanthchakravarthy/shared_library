@@ -34,7 +34,7 @@ do
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=DEV&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
       echo "dev folder created "
 
-    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
+    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:text/xml"
 echo "creating job inside folder"
 
   elif [[ $job == 'QA' ]]; then
@@ -42,7 +42,7 @@ echo "creating job inside folder"
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=QA&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
       echo "qa folder created"
 
-    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
+    curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:text/xml"
 echo "creating job inside folder"
 
 
@@ -51,7 +51,7 @@ echo "creating job inside folder"
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=PROD&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
       echo "prod folder created"
 
-curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
+curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data  "@localconfig.xml" -H "$CRUMB" -H "Content-Type:text/xml"
 
 #cat localconfig.xml | curl -H "Content-Type: text/xml" --data  @- -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" -H "$CRUMB"
 
