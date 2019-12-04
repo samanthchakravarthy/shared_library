@@ -21,12 +21,19 @@ curl -X POST "$jenkinsUrl/createItem?name=deploy&mode=com.cloudbees.hudson.plugi
 
 for job in DEV QA PROD
 do 
+  echo "inside for"
   if [[ job == 'DEV' ]]; then
+      echo $job
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=DEV&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
-  elif [[ job == 'DEV' ]]; then
+      echo "dev folder created"
+  elif [[ job == 'QA' ]]; then
+      echo $job
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=QA&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
-  elif [[ job == 'DEV' ]]; then
+      echo "qa folder created"
+  elif [[ job == 'PROD' ]]; then
+      echo $job
       curl -X POST "$jenkinsUrl/job/deploy/createItem?name=PROD&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
+      echo "prod folder created"
    else
       echo "Skip CD job creation"
    fi  
