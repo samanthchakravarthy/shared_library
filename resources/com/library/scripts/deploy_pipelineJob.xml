@@ -1,0 +1,104 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.36">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@1.4.0"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@1.4.0">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>artifactName</name>
+          <description></description>
+          <defaultValue>example-repo-local/snowball_installer.zip</defaultValue>
+          <trim>true</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>artifactServerUrl</name>
+          <description></description>
+          <defaultValue>http://18.234.252.228:8081/artifactory</defaultValue>
+          <trim>true</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>credentialsId</name>
+          <description></description>
+          <defaultValue>artifactory-credentials</defaultValue>
+          <trim>true</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>targetLocation</name>
+          <description></description>
+          <defaultValue>'/var/lib/jenkins/workspace/java-deployment-pipeline/'</defaultValue>
+          <trim>true</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.76">
+<<<<<<< HEAD
+    <script>
+
+pipeline {
+agent any
+stages {
+stage(&apos;Download Artifacts&apos;) {
+steps {
+cleanWs()
+script {
+def artifactory
+def downloadSpec
+//Setup Artifactory Connection and Download Specs
+echo &apos;Setting up Artifactory Connection......&apos;
+artifactory = Artifactory.newServer url: &apos;http://18.234.252.228:8081/artifactory&apos;, credentialsId: &apos;artifactory-credentials&apos;
+downloadSpec =
+&quot;&quot;&quot;{
+&quot;files&quot;: [
+{
+&quot;pattern&quot;: &quot;example-repo-local/snowball_installer.zip&quot;,
+&quot;target&quot;: &quot;&quot;
+}  
+]
+}&quot;&quot;&quot;
+// download from Artifactory.
+artifactory.download downloadSpec
+}
+}
+}
+stage(&apos;Deployment&apos;) {
+steps {
+sh &apos;pwd&apos;
+sh &apos;ls -ltr&apos;
+echo &apos;validating Java is installed or not&apos;
+sh label: &apos;&apos;, script: &apos;&apos;&apos;if java -version 2&gt;&amp;1 &gt;/dev/null | egrep &quot;\nS+\ns+version&quot;;then
+echo &quot;Java installed.&quot;
+else 
+echo &quot;Java NOT installed!&quot;
+sleep 5
+echo &quot;installing Java&quot;
+sudo  apt-get install default-jdk -y
+sleep 5
+java -version
+echo &quot;Java installed&quot;
+fi&apos;&apos;&apos;
+sh &apos;cd /home/devops/deploy_jarfile &amp;&amp; sudo  rm -rf /home/devops/deploy_jarfile/* &amp;&amp; pwd &amp;&amp; ls -ltr&apos;
+sh &apos;cp /var/lib/jenkins/workspace/java-deployment-pipeline/snowball_installer.zip /home/devops/deploy_jarfile/ &amp;&amp; ls -ltr&apos;
+sh &apos;cd /home/devops/deploy_jarfile/  &amp;&amp; unzip *.zip  &amp;&amp; ls -ltr &amp;&amp; rm -rf *.zip  &amp;&amp; cd java_artifact &amp;&amp; ls -ltr &apos;     
+sh &apos;cd /home/devops/deploy_jarfile/java_artifact/ &amp;&amp; nohup java -jar *.jar &amp;&apos;
+}
+}
+}
+}	
+
+	</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
