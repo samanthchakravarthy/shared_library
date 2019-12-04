@@ -21,7 +21,7 @@ def main(**kwargs):
  response = requests.post(url=jenkins_url, auth=(username, API_TOKEN), headers=headers)
  print(response)
 
- jenkins_obj = jenkins.Jenkins(jenkinsUrl, username, API_TOKEN)
+ jenkins_obj = jenkins.Jenkins(jenkinsUrl, username, API_TOKEN, headers)
  # template used to create pipeline job
  tree = ET.parse('resources/com/library/scripts/template/deploy_pipelineJob.xml')
  root = tree.getroot()
