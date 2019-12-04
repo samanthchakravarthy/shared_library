@@ -15,9 +15,9 @@ echo "hello"
 CRUMB=$(curl -s ''$jenkinsUrl'/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u "$username":"$API_TOKEN")
 echo $CRUMB
 
-if [ -e localconfig.xml ]; then
-  rm localconfig.xml
-fi  
+#if [ -e localconfig.xml ]; then
+ # rm localconfig.xml
+#fi  
 
 curl -X GET "$jenkinsUrl/job/deploy-demo/config.xml" -u "$username":"$API_TOKEN" -o localconfig.xml
 
