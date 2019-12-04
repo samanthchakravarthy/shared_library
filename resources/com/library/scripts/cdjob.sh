@@ -15,7 +15,7 @@ echo "hello"
 CRUMB=$(curl -s ''$jenkinsUrl'/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u "$username":"$API_TOKEN")
 echo $CRUMB
 
-curl -X GET "$jenkinsUrl/job/java-deployment-pipeline/config.xml" -u "$username":"$API_TOKEN" -o mylocalconfig.xml
+#curl -X GET "$jenkinsUrl/job/java-deployment-pipeline/config.xml" -u "$username":"$API_TOKEN" -o mylocalconfig.xml
 
 curl -X POST "$jenkinsUrl/createItem?name=deploy&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"FolderName","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK" -u "$username":"$API_TOKEN" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
 echo "deploy folder created successfully"
@@ -40,6 +40,6 @@ do
    fi  
 done   
    
-mylocalconfig.xml > localconfig.xml
+#mylocalconfig.xml > localconfig.xml
 
-curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data "@localconfig.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
+curl -X POST "$jenkinsUrl/job/deploy/job/$job/createItem?name=$reponame" -u "$username":"$API_TOKEN" --data "@../template/deploy_pipelineJob.xml" -H "$CRUMB" -H "Content-Type:application/x-www-form-urlencoded"
