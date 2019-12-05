@@ -15,7 +15,7 @@ pass=$(echo ${pass/@/"%40"})
 pass=$(echo ${pass/\?/"%3F"})
 pass=$(echo ${pass/\//"%2F"})
 
-user="$userid"
+user="hema021335@gmail.com"
 
 user=$(echo ${user/@/"%40"})
 
@@ -27,7 +27,7 @@ curl -X POST -H "Content-Type: application/json" \
 -d '{"scm": "git"}'
         
 
-git config --global user.email $userid
+git config --global user.email "hema021335@gmail.com"
 git config --global user.name $username
 
 echo "Clone the remote repository"
