@@ -21,7 +21,7 @@ fi
 CRUMB=$(curl -s ''$jenkinsUrl'/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u "$username":"$API_TOKEN")
 echo $CRUMB
 
-curl -X GET "$jenkinsUrl/job/java-pipeline/config.xml" -u "$username":"$API_TOKEN" -o mylocalconfig.xml
+curl -X GET "$jenkinsUrl/job/dataquality/config.xml" -u "$username":"$API_TOKEN" -o mylocalconfig.xml
 
 
 while read a; do
