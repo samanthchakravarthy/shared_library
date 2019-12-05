@@ -46,14 +46,14 @@ echo "Add files"
     
 for technology in java python scala informatica tableau hive impala oozie
 do 
-	if test $technology == "python"; then
-		cp -r -a ../resources/com/library/scripts/python/. .
-		touch readme.md
-		touch .gitignore
-		while read a; do
-			echo ${a//"reponame"/"$reponame"}
-		done < Jenkinsfile1 > Jenkinsfile	
-	elif test $technology == "java"; then
+#	if test $technology == "python"; then
+#		cp -r -a ../resources/com/library/scripts/python/. .
+#		touch readme.md
+#		touch .gitignore
+#		while read a; do
+#			echo ${a//"reponame"/"$reponame"}
+#		done < Jenkinsfile1 > Jenkinsfile	
+	if test $technology == "java"; then
 		cp -r -a ../resources/com/library/scripts/java/. .
 		touch readme.md
 		touch .gitignore
@@ -68,10 +68,6 @@ if test -e Jenkinsfile1; then
 fi
 
 ls
-
-
-
-
 echo "Add git add/commit/push changes to remote repository"
 
 	git add --all
