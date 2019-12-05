@@ -25,7 +25,7 @@ curl -X GET "$jenkinsUrl/job/dataquality/config.xml" -u "$username":"$API_TOKEN"
 
 
 while read a; do
-    echo ${a//"snowball.git"/"$reponame.git"}
+    echo ${a//"test-demo.git"/"$reponame.git"}
 done < mylocalconfig.xml > localconfig.xml
 echo "</org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject>" >> localconfig.xml
 
