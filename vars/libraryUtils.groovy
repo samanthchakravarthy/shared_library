@@ -183,7 +183,7 @@ def snapshot(args){
 */
 
 def uploadSpec(args){
-    def server = Artifactory.newServer url: "http://3.92.63.54:8081/artifactory", credentialsId: "artifactory-credentials"
+    def server = Artifactory.newServer url: "http://54.200.162.118:8081/artifactory", credentialsId: "artifactory"
     sh "pwd"
     def uploadSpec =
      """{
