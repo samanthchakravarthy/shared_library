@@ -86,8 +86,8 @@ void generateSonarPropertiesFile(args, String lang){
 }
 
 void runSonarAnalysis(String lang){
-    def scanner = tool 'SonarQube-Scanner'
-    withSonarQubeEnv('sonar-server'){
+    def scanner = tool 'SonarScanner'
+    withSonarQubeEnv('sonar'){
         println(scanner)
         println("Running sonar analysis for" +lang)
         sh"""
