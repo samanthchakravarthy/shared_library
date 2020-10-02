@@ -32,14 +32,13 @@ def executeRegressionTests(heal_enabled, levels, browser) {
         stage('Notification') {
             print('Notifying via teams')
             getNotifyMessage()
-            office365ConnectorSend message: getNotifyMessage(), status:"currentBuild.result", webhookUrl:'https://outlook.office.com/webhook/2ac6b5ed-eec5-4252-a1ea-2d200d4906ca@76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61/IncomingWebhook/c1457550db5f4b1c9d2b64116445a7fb/e738f645-7d63-468d-b25b-fcd9315c6c59'
+            office365ConnectorSend message: getNotifyMessage(), status:currentBuild.result, webhookUrl:'https://outlook.office.com/webhook/2ac6b5ed-eec5-4252-a1ea-2d200d4906ca@76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61/IncomingWebhook/c1457550db5f4b1c9d2b64116445a7fb/e738f645-7d63-468d-b25b-fcd9315c6c59'
         }
     }
 }
 
 def getNotifyMessage() {    
-    def xmlContent = readFile(file: '/var/lib/jenkins/workspace/test-pipeline/reports/output.xml')
-    print(xmlContent)    
+    def xmlContent = readFile(file: '/var/lib/jenkins/workspace/test-pipeline/reports/output.xml')    
     def result = new XmlSlurper().parseText(xmlContent)
     def cTests = result.statistics.total.stat[0]
     def cPass = result.statistics.total.stat[0].@pass
