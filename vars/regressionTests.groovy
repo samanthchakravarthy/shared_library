@@ -17,7 +17,7 @@ def executeRegressionTests(heal_enabled, levels, browser) {
         stage('Prepare Environment') {
             print('Preparing Environment for tests')
             String healValue = String.valueOf(heal_enabled)
-            healValue = healValue[0].toLowerCase() + healValue.substring(1)
+            healValue = healValue[0].toUpperCase() + healValue.substring(1)
             print(healValue)
         }
         stage('Execute Tests') {
