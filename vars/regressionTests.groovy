@@ -22,7 +22,7 @@ def executeRegressionTests(heal_enabled, levels, browser) {
             try {
                 //sh "docker run -v `pwd`/reports:/opt/robotframework/reports:Z -v `pwd`/project:/opt/robotframework/tests:Z -e BROWSER=$browser -e AWS_ACCESS_KEY_ID=AKIA2EMYZUE52BZL7B6A -e AWS_SECRET_ACCESS_KEY=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 -e levels=$levels -e healEnabled=$healValue -e ROBOT_THREADS=2 healer"
                 sh 'aaaa'                
-            } catch (Excepion e) {
+            } catch (Exception e) {
                 currentBuild.result = 'FAILURE'
             }            
         }
