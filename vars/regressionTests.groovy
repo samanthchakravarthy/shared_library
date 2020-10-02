@@ -41,5 +41,5 @@ def getNotifyMessage() {
     def xmlContent = readFile(file: '/var/lib/jenkins/workspace/test-pipeline/reports/output.xml')
     print(xmlContent)    
     def result = new XmlSlurper().parseText(xmlContent)
-    print(result.statistics.total.stat[0].pass)
+    print(result.statistics.total.stat[0])
 }
