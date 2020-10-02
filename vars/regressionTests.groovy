@@ -1,6 +1,8 @@
 def executeRegressionTests(heal_enabled, levels, browser) {
     print('Executing Regression tests')
-    print(heal_enabled, levels, browser)
+    print(heal_enabled)
+    print(levels)
+    print(browser)
     node {
         stage('Checkout Tests') {
             if (fileExists('project')) {
