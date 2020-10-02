@@ -1,5 +1,6 @@
-def executeRegressionTests() {
+def executeRegressionTests(browser) {
     print('Executing Regression tests')
+    print(browser)
     node {
         stage('Checkout Tests') {
             dir('project') {
