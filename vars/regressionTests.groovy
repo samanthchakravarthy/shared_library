@@ -31,7 +31,20 @@ def executeRegressionTests(heal_enabled, levels, browser) {
         }
         stage('Notification') {
             print('Notifying via teams')
-            office365ConnectorSend message: "Build Result", status:"<Build status>", webhookUrl:'https://outlook.office.com/webhook/2ac6b5ed-eec5-4252-a1ea-2d200d4906ca@76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61/IncomingWebhook/c1457550db5f4b1c9d2b64116445a7fb/e738f645-7d63-468d-b25b-fcd9315c6c59'
+            getNotifyMessage()
+            //office365ConnectorSend message: "Build Result", status:"currentBuild.result", webhookUrl:'https://outlook.office.com/webhook/2ac6b5ed-eec5-4252-a1ea-2d200d4906ca@76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61/IncomingWebhook/c1457550db5f4b1c9d2b64116445a7fb/e738f645-7d63-468d-b25b-fcd9315c6c59'
         }
     }
+}
+
+def getNotifyMessage() {
+    File file = new File('/var/lib/jenkins/workspace/test-pipeline/reports/output.xml')
+    def line, xmlContent;
+    file.withReader { reader ->
+        while ((line = reader.readLine()) != null) {            
+            xmlContent = xmlContent + "\n" + line            
+        }
+    }
+    def result = new XmlSlurper().parseText(text)
+    print(result.statistics.total)
 }
