@@ -3,7 +3,7 @@ def executeRegressionTests() {
     node {
         stage('Checkout Tests') {
             dir('project') {
-                git branch: 'master', credentialsId: 'bitbucket', url: 'https://haisrig@bitbucket.org/haisrig/queuereader.git'
+                git branch: 'master', credentialsId: 'bitbucket', url: 'https://bitbucket.org/haisrig/sfd_app_rtcs.git'
                 sh 'ls -ltR'
                 print('Cloing the Regression tests from Bitbucket')
             }
