@@ -55,6 +55,7 @@ def getNotifyMessage() {
 }
 
 def getColor(String buildStatus) {
+    print (buildStatus)
     switch(buildStatus) {
         case 'SUCCESS': return '#BDFFC2'
         case ['FAILURE', 'FAILED']: return '#FF9FA2'
