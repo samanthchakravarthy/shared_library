@@ -48,6 +48,9 @@ def getNotifyMessage() {
     def aPass = result.statistics.total.stat[1].@pass
     def aFail = result.statistics.total.stat[1].@fail
     return """
-    $cTests + ":\n" + "Pass: "+ $cPass + "Fail: " + $cFail + "\n" + $aTests + ":\n" + "Pass: "+ $aPass + "Fail: " + $aFail
+    $cTests: 
+        Pass: $cPass; Fail: $cFail
+    $aTests: 
+        Pass: $aPass; Fail: $aFail
     """
 }
