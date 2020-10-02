@@ -47,5 +47,6 @@ def getNotifyMessage() {
     def aTests = result.statistics.total.stat[1]
     def aPass = result.statistics.total.stat[1].@pass
     def aFail = result.statistics.total.stat[1].@fail
-    return cTests + ":\n" + "Pass: "+ cPass + "Fail: " + cFail + "\n" + aTests + ":\n" + "Pass: "+ aPass + "Fail: " + aFail
+    String msg = cTests + ":\n" + "Pass: "+ cPass + "Fail: " + cFail + "\n" + aTests + ":\n" + "Pass: "+ aPass + "Fail: " + aFail
+    return msg
 }
