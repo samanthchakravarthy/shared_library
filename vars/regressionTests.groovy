@@ -37,14 +37,9 @@ def executeRegressionTests(heal_enabled, levels, browser) {
     }
 }
 
-def getNotifyMessage() {
-    File file = new File('/var/lib/jenkins/workspace/test-pipeline/reports/output.xml')
-    def line, xmlContent;
-    file.withReader { reader ->
-        while ((line = reader.readLine()) != null) {            
-            xmlContent = xmlContent + "\n" + line            
-        }
-    }
-    def result = new XmlSlurper().parseText(text)
+def getNotifyMessage() {    
+    def xmlContent = readFile(file: '/var/lib/jenkins/workspace/test-pipeline/reports/output.xml')
+    print(xmlContent)    
+    def result = new XmlSlurper().parseText(xmlContent)
     print(result.statistics.total)
 }
