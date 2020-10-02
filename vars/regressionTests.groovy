@@ -53,7 +53,7 @@ def getNotifyMessage() {
         Pass: $cPass; Fail: $cFail
     $aTests: 
         Pass: $aPass; Fail: $aFail
-    """
+    """.stripIndent()
 }
 
 def getColor(String buildStatus) {
