@@ -2,7 +2,12 @@ def executeRegressionTests() {
     print('Executing Regression tests')
     node {
         stage('Checkout Tests') {
-            print('Cloing the Regression tests from Bitbucket')
+            dir('project') {
+                git branch: 'master', credentialsId: 'bitbucket', url: 'https://haisrig@bitbucket.org/haisrig/queuereader.git'
+                sh 'ls -ltR'
+                print('Cloing the Regression tests from Bitbucket')
+            }
+            sh 'rm -rf project'
         }
         stage('Prepare Environment') {
             print('Preparing Environment for tests')
