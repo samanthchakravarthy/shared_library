@@ -16,11 +16,14 @@ def executeRegressionTests(heal_enabled, levels, browser) {
         }
         stage('Prepare Environment') {
             print('Preparing Environment for tests')
+            String healValue = String.valueOf(heal_enabled)
+            healValue = healValue[0].toLowerCase() + healValue.substring(1)
+            print(healValue)
         }
         stage('Execute Tests') {
             print('Executing Regression tests')
             sh 'pwd && ls -ltR'
-            sh "docker run -v `pwd`/reports:/opt/robotframework/reports:Z -v `pwd`/project:/opt/robotframework/tests:Z -e BROWSER=$browser -e AWS_ACCESS_KEY_ID=AKIA2EMYZUE52BZL7B6A -e AWS_SECRET_ACCESS_KEY=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 -e levels=$levels -e healEnabled=$heal_enabled -e ROBOT_THREADS=2 healer"
+            //sh "docker run -v `pwd`/reports:/opt/robotframework/reports:Z -v `pwd`/project:/opt/robotframework/tests:Z -e BROWSER=$browser -e AWS_ACCESS_KEY_ID=AKIA2EMYZUE52BZL7B6A -e AWS_SECRET_ACCESS_KEY=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 -e levels=$levels -e healEnabled=$heal_enabled -e ROBOT_THREADS=2 healer"
         }
         stage('Notification') {
             print('Notifying via team')
