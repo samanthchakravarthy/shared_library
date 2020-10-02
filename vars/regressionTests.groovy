@@ -20,15 +20,14 @@ def executeRegressionTests(heal_enabled, levels, browser) {
         stage('Execute Tests') {
             print('Executing Regression tests')            
             try {
-                //sh "docker run -v `pwd`/reports:/opt/robotframework/reports:Z -v `pwd`/project:/opt/robotframework/tests:Z -e BROWSER=$browser -e AWS_ACCESS_KEY_ID=AKIA2EMYZUE52BZL7B6A -e AWS_SECRET_ACCESS_KEY=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 -e levels=$levels -e healEnabled=$healValue -e ROBOT_THREADS=2 healer"
-                sh 'ls'               
+                sh "docker run -v `pwd`/reports:/opt/robotframework/reports:Z -v `pwd`/project:/opt/robotframework/tests:Z -e BROWSER=$browser -e AWS_ACCESS_KEY_ID=AKIA2EMYZUE52BZL7B6A -e AWS_SECRET_ACCESS_KEY=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 -e levels=$levels -e healEnabled=$healValue -e ROBOT_THREADS=2 healer"                       
             } catch (Exception e) {
                 print ("Inside Catch block")
                 currentBuild.result = 'FAILURE'
             }            
         }
         stage('Prepare Reports') {
-            //robot outputPath: '/var/lib/jenkins/workspace/test-pipeline/reports', logFileName: 'log.html', outputFileName: 'output.xml', reportFileName: 'report.hml', otherFiles:'*.png', passThreshold: 100, unstableThreshold: 75.0
+            robot outputPath: '/var/lib/jenkins/workspace/test-pipeline/reports', logFileName: 'log.html', outputFileName: 'output.xml', reportFileName: 'report.hml', otherFiles:'*.png', passThreshold: 100, unstableThreshold: 75.0
         }
         stage('Notification') {
             print('Notifying via teams')
