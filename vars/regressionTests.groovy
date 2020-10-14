@@ -1,4 +1,4 @@
-def executeRegressionTests(heal_enabled, levels, browser) {    
+def executeRegressionTests(heal_enabled, levels, browser, repo) {    
     String healValue = ''
     node {
         stage('Checkout Tests') {
@@ -7,7 +7,8 @@ def executeRegressionTests(heal_enabled, levels, browser) {
                 sh 'rm -rf project'
             }
             dir('project') {
-                git branch: 'master', credentialsId: 'bitbucket', url: 'https://bitbucket.org/haisrig/sfd_app_rtcs.git'                
+                //git branch: 'master', credentialsId: 'bitbucket', url: 'https://bitbucket.org/haisrig/sfd_app_rtcs.git'
+                git branch: 'master', credentialsId: 'bitbucket', url: repo
                 print('Cloing the Regression tests from Bitbucket')
             }            
         }
