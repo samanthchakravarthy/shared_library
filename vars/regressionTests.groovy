@@ -1,8 +1,7 @@
 def executeRegressionTests(heal_enabled, levels, browser, repo) {    
     String healValue = ''
     node {
-        stage('Checkout Tests') {
-            sh 'ls -ltR'
+        stage('Checkout Tests') {            
             if (fileExists('project')) {
                 sh 'rm -rf project'
             }
