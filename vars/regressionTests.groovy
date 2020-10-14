@@ -27,7 +27,7 @@ def executeRegressionTests(heal_enabled, levels, browser, repo) {
             }            
         }
         stage('Prepare Reports') {
-            robot outputPath: '/var/lib/jenkins/workspace/test-pipeline/reports', logFileName: 'log.html', outputFileName: 'output.xml', reportFileName: 'report.hml', otherFiles:'*.png', passThreshold: 100, unstableThreshold: 75.0
+            robot outputPath: '/var/lib/jenkins/workspace/Regression-Test-Suite/reports', logFileName: 'log.html', outputFileName: 'output.xml', reportFileName: 'report.hml', otherFiles:'*.png', passThreshold: 100, unstableThreshold: 75.0
         }
         stage('Notification') {
             print('Notifying via teams')
@@ -40,7 +40,7 @@ def executeRegressionTests(heal_enabled, levels, browser, repo) {
 }
 
 def getNotifyMessage() {    
-    def xmlContent = readFile(file: '/var/lib/jenkins/workspace/test-pipeline/reports/output.xml')    
+    def xmlContent = readFile(file: '/var/lib/jenkins/workspace/Regression-Test-Suite/reports/output.xml')    
     def result = new XmlSlurper().parseText(xmlContent)
     def cTests = result.statistics.total.stat[0]
     def cPass = result.statistics.total.stat[0].@pass
