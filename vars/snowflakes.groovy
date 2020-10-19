@@ -3,7 +3,7 @@ node {
    stage('Checkout') { 
       checkout scm:[
         $class: 'GitSCM', 
-        branches: [[name: 'master']], 
+        branches: [[name: 'develop']], 
         doGenerateSubmoduleConfigurations: false, 
         extensions: [[$class: 'CleanCheckout']], 
         submoduleCfg: [], 
@@ -26,7 +26,7 @@ node {
    stage('Deploy') {
        sh 'ls -ltR'
        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'Snowflakes', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-        sh 'flyway -url=jdbc:snowflake://https://xg81978.southeast-asia.azure.snowflakecomputing.com/?db=DEMO_DB -user=$USERNAME -password=$PASSWORD -locations=filesystem:sql info'
+        sh 'flyway -url=jdbc:snowflake://https://xg81978.southeast-asia.azure.snowflakecomputing.com/?db=DEMO_DB -user=$USERNAME -password=$PASSWORD -locations=filesystem:sql migrate'
         }
    }
      
