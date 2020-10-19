@@ -7,7 +7,7 @@ node {
         doGenerateSubmoduleConfigurations: false, 
         extensions: [[$class: 'CleanCheckout']], 
         submoduleCfg: [], 
-        userRemoteConfigs: [[credentialsId: 'Bitbucket', url: 'https://haisrig@bitbucket.org/haisrig/sf_analytics.git']]
+        userRemoteConfigs: [[credentialsId: 'bitbucket', url: 'https://haisrig@bitbucket.org/haisrig/sf_analytics.git']]
     ]
    }
    stage('MergeConflict') {
