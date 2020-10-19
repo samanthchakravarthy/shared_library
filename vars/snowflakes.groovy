@@ -19,7 +19,7 @@ node {
         def scannerHome = tool 'SonarQube Scanner'
         withSonarQubeEnv('sonar') {
             sh """
-                ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sf_analysis_cg -Dsonar.organization=haisrig-github
+                ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sf_analysis -Dsonar.organization=haisrig-bitbucket
             """
         }
    }
