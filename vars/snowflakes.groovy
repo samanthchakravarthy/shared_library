@@ -1,5 +1,5 @@
-node {
-   
+def executeSnowflakesPipeline() {
+node { 
    stage('Checkout') { 
       checkout scm:[
         $class: 'GitSCM', 
@@ -29,6 +29,6 @@ node {
         sh 'flyway -url=jdbc:snowflake://https://xg81978.southeast-asia.azure.snowflakecomputing.com/?db=DEMO_DB -user=$USERNAME -password=$PASSWORD -locations=filesystem:sql info'
         }
    }
-   
-   
+     
+}
 }
